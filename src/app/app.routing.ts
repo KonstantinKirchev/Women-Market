@@ -4,7 +4,9 @@ import {AuthGuard} from "./shared/security/auth.guard";
 
 import {
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent
 } from './index';
 
 const appRoutes: Routes= [
@@ -12,14 +14,14 @@ const appRoutes: Routes= [
         path:'',
         component: HomeComponent
     },
-    // {
-    //     path:'login',
-    //     component: LoginComponent
-    // },
-    // {
-    //     path:'register',
-    //     component: RegisterComponent
-    // },
+    {
+        path:'login',
+        component: LoginComponent
+    },
+    {
+        path:'register',
+        component: RegisterComponent
+    },
     // {
     //     path:'profile',
     //     component: ProfileComponent,
