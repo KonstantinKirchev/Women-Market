@@ -6,7 +6,8 @@ import {
     AppComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent
 } from './index';
 
 const appRoutes: Routes= [
@@ -22,11 +23,11 @@ const appRoutes: Routes= [
         path:'register',
         component: RegisterComponent
     },
-    // {
-    //     path:'profile',
-    //     component: ProfileComponent,
-    //     canActivate: [AuthGuard]
-    // },
+    {
+        path:'profile',
+        component: ProfileComponent,
+        canActivate: [AuthGuard]
+    },
     {
         path:'**',
         redirectTo: ''
