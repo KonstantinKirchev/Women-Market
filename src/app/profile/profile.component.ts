@@ -15,6 +15,5 @@ export class ProfileComponent implements OnInit {
     this.profile = JSON.parse(localStorage.getItem('profile'))
     let name = this.profile.email.substring(0, this.profile.email.lastIndexOf("@"))
     this.profile.displayName = name
-    console.log(this.profile)
   }
 }

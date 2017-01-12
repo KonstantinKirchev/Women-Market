@@ -8,6 +8,8 @@ import { AuthService } from "./shared/security/auth.service";
 import { AuthGuard } from "./shared/security/auth.guard";
 import { AngularFireModule } from "angularfire2/index";
 
+import { CarouselModule } from 'ng2-bootstrap';
+
 import { AppComponent, 
          HomeComponent, 
          NavbarComponent, 
@@ -16,7 +18,8 @@ import { AppComponent,
          ProfileComponent 
         } from './index';
 
-import { UsersService } from "./shared/services/users.service"
+import { UsersService } from "./shared/services/users.service";
+import { StoresComponent } from './stores/stores.component'
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { UsersService } from "./shared/services/users.service"
     NavbarComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    StoresComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,8 @@ import { UsersService } from "./shared/services/users.service"
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    routing
+    routing,
+    CarouselModule
   ],
   providers: [appRoutingProviders, AuthService, AuthGuard, UsersService],
   bootstrap: [AppComponent]

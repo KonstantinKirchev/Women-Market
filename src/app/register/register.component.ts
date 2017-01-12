@@ -43,7 +43,7 @@ export class RegisterComponent  {
                     let name = email.substring(0, email.lastIndexOf("@"));
                     localStorage.setItem('username', name);
                     localStorage.setItem('user_id', authResult.uid);
-                    let data = {uid: authResult.uid, name: name, email: email}
+                    let data = {uid: authResult.uid, name: name, email: email, isAdmin: false}
                     this.usersService.addUser(JSON.stringify(data)).subscribe(()=>console.log('User added.'));
                 },
                 err => alert(err)

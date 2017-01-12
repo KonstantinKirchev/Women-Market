@@ -7,7 +7,8 @@ import {
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    StoresComponent
 } from './index';
 
 const appRoutes: Routes= [
@@ -22,6 +23,10 @@ const appRoutes: Routes= [
     {
         path:'register',
         component: RegisterComponent
+    },
+    {
+        path:'stores',
+        component: StoresComponent
     },
     {
         path:'profile',
