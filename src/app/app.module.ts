@@ -8,12 +8,15 @@ import { AuthService } from "./shared/security/auth.service";
 import { AuthGuard } from "./shared/security/auth.guard";
 import { AngularFireModule } from "angularfire2/index";
 
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ProfileComponent } from './profile/profile.component';
+import { AppComponent, 
+         HomeComponent, 
+         NavbarComponent, 
+         LoginComponent,
+         RegisterComponent,
+         ProfileComponent 
+        } from './index';
+
+import { UsersService } from "./shared/services/users.service"
 
 @NgModule({
   declarations: [
@@ -32,7 +35,7 @@ import { ProfileComponent } from './profile/profile.component';
     HttpModule,
     routing
   ],
-  providers: [appRoutingProviders, AuthService, AuthGuard],
+  providers: [appRoutingProviders, AuthService, AuthGuard, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

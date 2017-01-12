@@ -27,9 +27,15 @@ export class AuthService {
       .catch(error => console.log('ERROR @ AuthService#signIn() :', error));
   }
 
-  // login(email, password): Observable<FirebaseAuthState> {
-  //     return this.fromFirebaseAuthPromise(this.auth$.login({email, password}));
-  // }
+  signUp(email, password): firebase.Promise<FirebaseAuthState> {
+      return this.auth$.createUser({email, password})
+        .catch(error => console.log('ERROR @ AuthService#signIn() :', error));
+  }
+
+  login(email, password): firebase.Promise<FirebaseAuthState> {
+      return this.auth$.login({email, password})
+        .catch(error => console.log('ERROR @ AuthService#login() :', error));
+  }
 
   signInWithGoogle(): firebase.Promise<FirebaseAuthState> {
     return this.signIn(AuthProviders.Google);
@@ -38,6 +44,8 @@ export class AuthService {
   logout() {
         this.auth$.logout();
         localStorage.removeItem('profile');
+        localStorage.removeItem('user_id');
+        localStorage.removeItem('username');
         this.router.navigate(['/']);
     }
 }

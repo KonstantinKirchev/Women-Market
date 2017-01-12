@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from "@angular/forms";
 import { AuthService } from "../shared/security/auth.service";
 import { Router } from "@angular/router";
+import { AngularFire } from 'angularfire2';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   profile: {}
 
-  constructor(private fb:FormBuilder, private authService: AuthService,
+  constructor(private fb:FormBuilder, private authService: AuthService, public af: AngularFire,
                 private router:Router) {
 
       this.form = this.fb.group({
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
           password: ['',Validators.required]
       });
 
-
+      
   }
 
   ngOnInit() {
@@ -33,24 +34,18 @@ export class LoginComponent implements OnInit {
   }
 
 
-  // login() {
-
-  //     const formValue = this.form.value;
-
-  //     this.authService.signInWithEmailPassword(formValue.email, formValue.password)
-  //         .subscribe(
-  //             (authResult: any) => {
-  //               this.router.navigate(['/'])
-  //               let emailResult = authResult.auth.email
-  //               let nameResult = emailResult.substring(0, emailResult.lastIndexOf("@"));
-  //               localStorage.setItem('profile', JSON.stringify(authResult.auth));
-  //               localStorage.setItem('username', nameResult);
-  //             },
-  //             alert
-  //         );
-
-
-  // }
+  login() {
+      const formValue = this.form.value;
+     
+      this.authService.login(formValue.email, formValue.password)
+      .then((authResult: any) => {
+        this.router.navigate(['/'])
+        let emailResult = authResult.auth.email
+        let nameResult = emailResult.substring(0, emailResult.lastIndexOf("@"));
+        localStorage.setItem('profile', JSON.stringify(authResult.auth));
+        localStorage.setItem('username', nameResult);
+      });
+  }
 
   loginWithGoogle(){
     this.authService.signInWithGoogle()
