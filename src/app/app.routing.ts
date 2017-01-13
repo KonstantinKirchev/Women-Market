@@ -8,7 +8,8 @@ import {
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    StoresComponent
+    StoresComponent,
+    ProductsComponent
 } from './index';
 
 const appRoutes: Routes= [
@@ -31,6 +32,11 @@ const appRoutes: Routes= [
     {
         path:'profile',
         component: ProfileComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path:'products',
+        component: ProductsComponent,
         canActivate: [AuthGuard]
     },
     {
