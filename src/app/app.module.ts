@@ -19,7 +19,8 @@ import { AppComponent,
         } from './index';
 
 import { UsersService } from "./shared/services/users.service";
-import { StoresComponent } from './stores/stores.component'
+import { StoresComponent } from './stores/stores.component';
+import { FooterComponent } from './footer/footer.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { StoresComponent } from './stores/stores.component'
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    StoresComponent
+    StoresComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
