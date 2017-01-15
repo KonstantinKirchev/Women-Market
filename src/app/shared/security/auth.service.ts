@@ -18,6 +18,14 @@ export class AuthService {
     return this.authState !== null;
   }
 
+  get isAdmin(): boolean {
+    let profile = JSON.parse(localStorage.getItem('profile'))
+    if(profile){
+      return profile.email === 'konstantin2119@gmail.com';
+    }
+    return false;
+  }
+
   get id(): string {
     return this.authenticated ? this.authState.uid : '';
   }
