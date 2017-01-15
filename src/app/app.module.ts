@@ -12,14 +12,13 @@ import { CarouselModule } from 'ng2-bootstrap';
 import { ModalModule } from 'ng2-bootstrap/modal';
 
 import { AppComponent, HomeComponent, NavbarComponent, LoginComponent, RegisterComponent, ProfileComponent,
-         StoresComponent, FooterComponent, CategoriesComponent, ProductsComponent, EditProfileComponent  
+         StoresComponent, FooterComponent, CategoriesComponent, ProductsComponent, EditProfileComponent,
+         AddStoreComponent, AddProductComponent, StoreModalComponent  
         } from './index';
 
 import { UsersService } from "./shared/services/users.service";
 import { StoresService } from "./shared/services/stores.service";
-import { AddStoreComponent } from './add-store/add-store.component';
-import { AddProductComponent } from './add-product/add-product.component';
-import { StoreModalComponent } from './store-modal/store-modal.component';
+import { ProductsService } from "./shared/services/products.service";
 
 
 @NgModule({
@@ -49,7 +48,7 @@ import { StoreModalComponent } from './store-modal/store-modal.component';
     CarouselModule,
     ModalModule
   ],
-  providers: [appRoutingProviders, AuthService, AuthGuard, UsersService, StoresService],
+  providers: [appRoutingProviders, AuthService, AuthGuard, UsersService, StoresService, ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

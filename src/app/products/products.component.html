@@ -1,4 +1,41 @@
-<app-categories></app-categories>
-<p>
-  products works!
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Products</h1>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding: 10px;" *ngFor="let product of products">
+            <h3 style="text-align: center; margin-top: 0;">{{product.name}}</h3>
+            <div class="hovereffect">
+              
+                <img class="img-responsive" src="{{product.picture}}" alt="" style="height: 30vh;">
+                    <div class="overlay">
+                        <h2></h2>
+                        <p class="set1">
+                            <a href="#">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </p>
+                        <hr>
+                        <hr>
+                        <p class="set2">
+                            <a href="#">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa fa-dribbble"></i>
+                            </a>
+                        </p>
+                    </div>
+            </div>
+            <h3 style="text-align: center; margin-top: 0;"><a style="cursor: pointer;" data-toggle="modal" data-target="#myModal">{{product.store}}</a></h3>
+            <h4><span style="float: left;">{{product.quantity}} kg.</span> <span style="float: right;">{{product.price}} lv.</span></h4>
+            
+        
+            <!--<app-store-modal [store]="store"></app-store-modal>-->
+        </div>
+
+    </div>
+</div>

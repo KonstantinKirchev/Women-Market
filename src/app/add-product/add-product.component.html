@@ -1,3 +1,27 @@
-<p>
-  add-product works!
-</p>
+<div class="container">
+  <form class="form-signin" autocomplete="off" novalidate [formGroup]="form">
+      <h2 class="form-signin-heading">Add new product</h2>
+      <label for="inputName" class="sr-only">Name</label>
+      <input type="text" id="inputName" class="form-control" placeholder="Name" formControlName="name" autofocus>
+      <br>
+      <label for="inputPicture" class="sr-only">Picture</label>
+      <input type="text" id="inputPicture" class="form-control" placeholder="Picture URL" formControlName="picture" autofocus>
+      <br>
+      <label for="inputPrice" class="sr-only">Price</label>
+      <input type="number" id="inputPrice" class="form-control" placeholder="Price" formControlName="price" autofocus>
+      <br>
+      <label for="inputQuantity" class="sr-only">Quantity</label>
+      <input type="number" id="inputQuantity" class="form-control" placeholder="Quantity" formControlName="quantity" autofocus>
+      <br>
+      <label for="inputDescription" class="sr-only">Description</label>
+      <textarea id="inputDescription" class="form-control" placeholder="Description" formControlName="description" autofocus></textarea>
+      <br>
+      <select class="form-control" id="select" formControlName="store">
+          <option *ngFor="let store of stores" value="{{store.name}}">{{store.name}}</option>
+      </select>
+      <br>
+      <button type="button" class="btn btn-lg btn-primary" (click)="add()" [disabled]="!isAllValExist()">Add</button>
+      <button type="button" class="btn btn-lg btn-alert" (click)="cancel()">Cancel</button>
+      <br>
+  </form>
+</div>
