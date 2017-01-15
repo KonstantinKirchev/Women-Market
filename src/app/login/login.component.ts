@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from "@angular/forms";
 import { AuthService } from "../shared/security/auth.service";
+import { UsersService } from "../shared/services/users.service";
 import { Router } from "@angular/router";
 import { AngularFire } from 'angularfire2';
 
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   profile: {}
 
   constructor(private fb:FormBuilder, private authService: AuthService, public af: AngularFire,
-                private router:Router) {
+                private router:Router, private usersService: UsersService) {
 
       this.form = this.fb.group({
           email: ['',Validators.required],
@@ -52,6 +53,9 @@ export class LoginComponent implements OnInit {
       .then((authResult: any) => {
         this.router.navigate(['/'])
         localStorage.setItem('profile', JSON.stringify(authResult.auth));
+        //let data = {uid: authResult.auth.uid, name: authResult.auth.displayName, email: authResult.auth.email, isAdmin: false}
+        //this.usersService.findUserById(authResult.auth.uid).subscribe((result)=>console.log(result));
+        //this.usersService.addUser(JSON.stringify(data)).subscribe(()=>console.log('User added.'));
       });
   }
 

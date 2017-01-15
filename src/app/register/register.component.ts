@@ -41,6 +41,8 @@ export class RegisterComponent  {
                     this.router.navigateByUrl('/');
                     let email = authResult.auth.email;
                     let name = email.substring(0, email.lastIndexOf("@"));
+                    let profile = {displayName: name, email: email, photoURL: ''}
+                    localStorage.setItem('profile', JSON.stringify(profile));
                     localStorage.setItem('username', name);
                     localStorage.setItem('user_id', authResult.uid);
                     let data = {uid: authResult.uid, name: name, email: email, isAdmin: false}

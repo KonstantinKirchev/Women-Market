@@ -9,7 +9,8 @@ import {
     RegisterComponent,
     ProfileComponent,
     StoresComponent,
-    ProductsComponent
+    ProductsComponent,
+    EditProfileComponent
 } from './index';
 
 const appRoutes: Routes= [
@@ -32,7 +33,14 @@ const appRoutes: Routes= [
     {
         path:'profile',
         component: ProfileComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        children: [
+            {
+                path: 'edit',
+                component: EditProfileComponent,
+                canActivate: [AuthGuard]
+            }
+        ]
     },
     {
         path:'products',

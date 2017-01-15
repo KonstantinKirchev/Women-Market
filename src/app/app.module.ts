@@ -10,19 +10,12 @@ import { AngularFireModule } from "angularfire2/index";
 
 import { CarouselModule } from 'ng2-bootstrap';
 
-import { AppComponent, 
-         HomeComponent, 
-         NavbarComponent, 
-         LoginComponent,
-         RegisterComponent,
-         ProfileComponent 
+import { AppComponent, HomeComponent, NavbarComponent, LoginComponent, RegisterComponent, ProfileComponent,
+         StoresComponent, FooterComponent, CategoriesComponent, ProductsComponent, EditProfileComponent  
         } from './index';
 
 import { UsersService } from "./shared/services/users.service";
-import { StoresComponent } from './stores/stores.component';
-import { FooterComponent } from './footer/footer.component';
-import { CategoriesComponent } from './categories/categories.component';
-import { ProductsComponent } from './products/products.component'
+
 
 @NgModule({
   declarations: [
@@ -35,7 +28,8 @@ import { ProductsComponent } from './products/products.component'
     StoresComponent,
     FooterComponent,
     CategoriesComponent,
-    ProductsComponent
+    ProductsComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
