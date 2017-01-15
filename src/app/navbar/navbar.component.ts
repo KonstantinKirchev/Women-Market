@@ -8,8 +8,6 @@ import { UsersService } from '../shared/services/users.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  
-  isAdmin: boolean
 
   constructor(private auth: AuthService, private usersService: UsersService) { }
 
