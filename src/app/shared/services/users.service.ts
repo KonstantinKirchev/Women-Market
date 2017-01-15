@@ -9,8 +9,6 @@ import {firebaseConfig} from "../../../environments/firebase.config";
 @Injectable()
 export class UsersService {
 
-    userKey: string
-
     constructor(private db:AngularFireDatabase, private http: Http) {
     }
 
