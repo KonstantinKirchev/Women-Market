@@ -15,6 +15,8 @@ import { AppComponent, HomeComponent, NavbarComponent, LoginComponent, RegisterC
         } from './index';
 
 import { UsersService } from "./shared/services/users.service";
+import { AddStoreComponent } from './add-store/add-store.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { UsersService } from "./shared/services/users.service";
     FooterComponent,
     CategoriesComponent,
     ProductsComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    AddStoreComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,

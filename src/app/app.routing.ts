@@ -10,7 +10,9 @@ import {
     ProfileComponent,
     StoresComponent,
     ProductsComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    AddStoreComponent,
+    AddProductComponent
 } from './index';
 
 const appRoutes: Routes= [
@@ -46,6 +48,22 @@ const appRoutes: Routes= [
         path:'products',
         component: ProductsComponent,
         canActivate: [AuthGuard]
+    },
+    {
+        path:'admin',
+        canActivate: [AuthGuard],
+        children: [
+            {
+                path: 'add/store',
+                component: AddStoreComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: 'add/product',
+                component: AddProductComponent,
+                canActivate: [AuthGuard]
+            }
+        ]
     },
     {
         path:'**',
