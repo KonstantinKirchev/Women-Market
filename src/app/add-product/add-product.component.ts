@@ -14,6 +14,7 @@ export class AddProductComponent implements OnInit {
 
   form: FormGroup
   stores: any
+  categories: string[] = ['fruits', 'vegetables', 'dairy', 'meats']
 
   constructor(private fb:FormBuilder, public af: AngularFire, private router:Router,
               private productsService: ProductsService, private storesService: StoresService) {
@@ -23,6 +24,7 @@ export class AddProductComponent implements OnInit {
                     price: ['', Validators.required],
                     quantity: ['', Validators.required],
                     description: ['', Validators.required],
+                    category: ['', Validators.required],
                     store: ['', Validators.required]
                 });
                }
@@ -33,17 +35,17 @@ export class AddProductComponent implements OnInit {
 
   isAllValExist() {
       const val = this.form.value;
-      return val && val.name && val.picture && val.price && val.quantity && val.description && val.store
+      return val && val.name && val.picture && val.price && val.quantity && val.description && val.category && val.store
   }
 
   add(){
     const val = this.form.value;
 
     let data = { name: val.name, picture: val.picture, price: val.price, 
-                 quantity: val.quantity, description: val.description, store: val.store}
+                 quantity: val.quantity, description: val.description, category: val.category, store: val.store}
 
     this.productsService.addProduct(JSON.stringify(data)).subscribe(()=>console.log('Product added.'));
-    this.router.navigate(['/products'])
+    this.router.navigate(['/products/all'])
   }
 
   cancel(){

@@ -46,8 +46,34 @@ const appRoutes: Routes= [
     },
     {
         path:'products',
-        component: ProductsComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        children: [
+            {
+                path: 'all',
+                component: ProductsComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: 'fruits',
+                component: ProductsComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: 'vegetables',
+                component: ProductsComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: 'dairy',
+                component: ProductsComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: 'meats',
+                component: ProductsComponent,
+                canActivate: [AuthGuard]
+            }
+        ]
     },
     {
         path:'admin',

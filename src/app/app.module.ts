@@ -20,6 +20,8 @@ import { UsersService } from "./shared/services/users.service";
 import { StoresService } from "./shared/services/stores.service";
 import { ProductsService } from "./shared/services/products.service";
 
+import { CategoryFilterPipe } from "./shared/pipes/category-filter.pipe"
+
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { ProductsService } from "./shared/services/products.service";
     EditProfileComponent,
     AddStoreComponent,
     AddProductComponent,
-    StoreModalComponent
+    StoreModalComponent,
+    CategoryFilterPipe
   ],
   imports: [
     BrowserModule,

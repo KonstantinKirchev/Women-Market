@@ -16,6 +16,10 @@
       <label for="inputDescription" class="sr-only">Description</label>
       <textarea id="inputDescription" class="form-control" placeholder="Description" formControlName="description" autofocus></textarea>
       <br>
+      <select class="form-control" id="select" formControlName="category">
+          <option *ngFor="let category of categories" value="{{category}}">{{category}}</option>
+      </select>
+      <br>
       <select class="form-control" id="select" formControlName="store">
           <option *ngFor="let store of stores" value="{{store.name}}">{{store.name}}</option>
       </select>

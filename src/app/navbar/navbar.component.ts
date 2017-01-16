@@ -9,6 +9,9 @@ import { UsersService } from '../shared/services/users.service';
 })
 export class NavbarComponent implements OnInit {
 
+  categories: string[] = ['All', 'Fruits', 'Vegetables', 'Dairy', 'Meats']
+  category: string
+
   constructor(private auth: AuthService, private usersService: UsersService) { }
 
   ngOnInit() {
@@ -16,6 +19,11 @@ export class NavbarComponent implements OnInit {
 
   logout() {
       this.auth.logout();
+  }
+
+  getValue(category){
+    localStorage.setItem('category', category.toLowerCase());
+    console.log(category)
   }
 
 }

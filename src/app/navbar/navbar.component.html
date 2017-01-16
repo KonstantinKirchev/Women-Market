@@ -21,7 +21,14 @@
             </ul>
           </li>
           <li><a routerLink="/stores">Stores</a></li>
-          <li><a routerLink="/products">Products</a></li>
+          <li  role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              Products <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li *ngFor="let category of categories"><a routerLink="products/{{category | lowercase}}" (click)="getValue(category)">{{category}}</a></li>
+            </ul>
+          </li>
         </ul>
         <form class="navbar-form navbar-right" role="search">
           <div class="form-group">

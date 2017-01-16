@@ -9,7 +9,7 @@ import { ProductsService } from "../shared/services/products.service";
 export class ProductsComponent implements OnInit {
 
   products: any
-
+  
   constructor(private productsService: ProductsService) { }
 
   ngOnInit() {

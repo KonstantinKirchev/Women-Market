@@ -9,12 +9,13 @@ export class Product {
         public price: number,
         public quantity: number,
         public description: string,
-        public store: string) {
+        public store: string,
+        public category: string) {
 
     }
 
-    static fromJson({$key, name, picture, price, quantity, description, store}) {
-        return new Product($key, name, picture, price, quantity, description, store);
+    static fromJson({$key, name, picture, price, quantity, description, store, category}) {
+        return new Product($key, name, picture, price, quantity, description, store, category);
     }
 
     static fromJsonArray(json : any[]) : Product[] {
