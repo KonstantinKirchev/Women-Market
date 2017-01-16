@@ -2,8 +2,16 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Products</h1>
+            <form class="navbar-form" role="search">
+                <div class="input-group add-on">
+                <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text" [(ngModel)]="term">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+                </div>
+            </form>
         </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding: 10px;" *ngFor="let product of products | categoryFilter">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding: 10px;" *ngFor="let product of products | categoryFilter | productFilter:term">
             <h3 style="text-align: center; margin-top: 0;">{{product.name}}</h3>
             <div class="hovereffect">
               

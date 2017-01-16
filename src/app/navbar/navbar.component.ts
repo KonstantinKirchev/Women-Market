@@ -23,7 +23,6 @@ export class NavbarComponent implements OnInit {
 
   getValue(category){
     localStorage.setItem('category', category.toLowerCase());
-    console.log(category)
   }
 
 }
