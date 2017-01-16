@@ -11,7 +11,19 @@
                 </div>
             </form>
         </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding: 10px;" *ngFor="let product of products | categoryFilter | productFilter:term">
+        <div class="row">
+            <div class="col-sm-6 col-md-4" *ngFor="let product of products | categoryFilter | productFilter:term">
+                <div class="thumbnail">
+                <img src="{{product.picture}}" alt="product">
+                <div class="caption">
+                    <h3>{{product.name}}</h3>
+                    <p>{{product.description}}</p>
+                    <p><a class="btn btn-primary" role="button" (click)="addToCart(product)">Add to cart</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding: 10px;" *ngFor="let product of products | categoryFilter | productFilter:term">
             <h3 style="text-align: center; margin-top: 0;">{{product.name}}</h3>
             <div class="hovereffect">
               
@@ -42,8 +54,8 @@
             <h4><span style="float: left;">{{product.quantity}} kg.</span> <span style="float: right;">{{product.price}} lv.</span></h4>
             
         
-            <!--<app-store-modal [store]="store"></app-store-modal>-->
-        </div>
+            <app-store-modal [store]="store"></app-store-modal>
+        </div>-->
 
     </div>
 </div>

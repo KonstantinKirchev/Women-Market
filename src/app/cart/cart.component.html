@@ -1,3 +1,25 @@
-<p>
-  cart works!
-</p>
+<section id="viewMyMessages">
+    <h1>My Cart</h1>
+    <div class="messages" id="myMessages">
+        <table class="table table-striped table-hover ">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of productList; let i = index">
+                    <td>{{product.name}}</td>
+                    <td><button (click)="decrease(i)">-</button> {{product.quantity}} <button (click)="increase(i)">+</button></td>
+                    <td>{{product.price | number:'1.1-2'}}</td>
+                    <td><button (click)="deleteMessage(product.$key)" class="btn btn-danger">Remove</button></td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <h2>Total: {{total}}</h2>
+</section>
