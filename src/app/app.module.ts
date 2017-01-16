@@ -21,7 +21,8 @@ import { StoresService } from "./shared/services/stores.service";
 import { ProductsService } from "./shared/services/products.service";
 
 import { CategoryFilterPipe } from "./shared/pipes/category-filter.pipe"
-import { ProductFilterPipe } from "./shared/pipes/product-filter.pipe"
+import { ProductFilterPipe } from "./shared/pipes/product-filter.pipe";
+import { CartComponent } from './cart/cart.component'
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { ProductFilterPipe } from "./shared/pipes/product-filter.pipe"
     AddProductComponent,
     StoreModalComponent,
     CategoryFilterPipe,
-    ProductFilterPipe
+    ProductFilterPipe,
+    CartComponent
   ],
   imports: [
     BrowserModule,

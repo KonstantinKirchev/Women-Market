@@ -12,7 +12,8 @@ import {
     ProductsComponent,
     EditProfileComponent,
     AddStoreComponent,
-    AddProductComponent
+    AddProductComponent,
+    CartComponent
 } from './index';
 
 const appRoutes: Routes= [
@@ -90,6 +91,10 @@ const appRoutes: Routes= [
                 canActivate: [AuthGuard]
             }
         ]
+    },
+    {
+        path:'cart',
+        component: CartComponent
     },
     {
         path:'**',

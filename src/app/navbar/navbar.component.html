@@ -31,6 +31,12 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <!--<li>
+            <a class="navbar-brand navbar-brand-logo" href="http://www.creative-tim.com">
+                <img src="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/blue-metallic-orbs-icons-business/078688-blue-metallic-orb-icon-business-basket.png">
+            </a>
+          </li>-->
+          <li><a routerLink="/cart"><span class="fa fa-shopping-cart" aria-hidden="true"></span></a></li>
           <li><a routerLink="/login" *ngIf="!auth.authenticated">Login</a></li>
           <li><a routerLink="/register" *ngIf="!auth.authenticated">Register</a></li>
           <li><a routerLink="/profile" *ngIf="auth.authenticated">Profile</a></li>
