@@ -5,7 +5,7 @@ export class ShoppingCart {
     constructor(
         public $key: string,
         public ownerId: string,
-        public products: Object[],
+        public products: any[],
         public totalPrice: number,
         public dateOfOrder: Date,
         public isComplete: boolean) {

@@ -15,11 +15,11 @@
                     <td>{{product.name}}</td>
                     <td><button (click)="decrease(i)">-</button> {{product.quantity}} <button (click)="increase(i)">+</button></td>
                     <td>{{product.price | number:'1.1-2'}}</td>
-                    <td><button (click)="deleteMessage(product.$key)" class="btn btn-danger">Remove</button></td>
-
+                    <td><button (click)="removeProduct(i)" class="btn btn-danger">Remove</button></td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <h2>Total: {{total}}</h2>
+    <h2>Total: {{total | number:'1.1-2'}}</h2>
+    <button (click)="order()" class="btn btn-danger" *ngIf="isEmpty">Order now</button>
 </section>

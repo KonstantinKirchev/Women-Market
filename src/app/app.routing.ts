@@ -13,7 +13,7 @@ import {
     EditProfileComponent,
     AddStoreComponent,
     AddProductComponent,
-    CartComponent
+    ShoppingCartComponent
 } from './index';
 
 const appRoutes: Routes= [
@@ -93,8 +93,8 @@ const appRoutes: Routes= [
         ]
     },
     {
-        path:'cart',
-        component: CartComponent
+        path:'shopping-cart',
+        component: ShoppingCartComponent
     },
     {
         path:'**',

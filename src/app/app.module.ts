@@ -19,10 +19,11 @@ import { AppComponent, HomeComponent, NavbarComponent, LoginComponent, RegisterC
 import { UsersService } from "./shared/services/users.service";
 import { StoresService } from "./shared/services/stores.service";
 import { ProductsService } from "./shared/services/products.service";
+import { ShoppingCartService } from "./shared/services/shopping_cart.service";
 
 import { CategoryFilterPipe } from "./shared/pipes/category-filter.pipe"
 import { ProductFilterPipe } from "./shared/pipes/product-filter.pipe";
-import { CartComponent } from './cart/cart.component'
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component'
 
 
 @NgModule({
@@ -43,7 +44,7 @@ import { CartComponent } from './cart/cart.component'
     StoreModalComponent,
     CategoryFilterPipe,
     ProductFilterPipe,
-    CartComponent
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +56,7 @@ import { CartComponent } from './cart/cart.component'
     CarouselModule,
     ModalModule
   ],
-  providers: [appRoutingProviders, AuthService, AuthGuard, UsersService, StoresService, ProductsService],
+  providers: [appRoutingProviders, AuthService, AuthGuard, UsersService, StoresService, ProductsService, ShoppingCartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
