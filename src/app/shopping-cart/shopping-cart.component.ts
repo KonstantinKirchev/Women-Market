@@ -73,6 +73,7 @@ export class ShoppingCartComponent implements OnInit {
     localStorage.removeItem('shopping-cart')
     this.productList = null
     this.total = 0
+    this.isEmpty = false
   }
 
 }
