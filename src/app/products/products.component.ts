@@ -23,13 +23,11 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     this.productsService.findAllProducts().subscribe((res)=> this.products = res)
     this.cart = JSON.parse(localStorage.getItem('shopping-cart'))
-    console.log(this.cart)
   }
 
   addToCart(product){
 
     if(this.cart.indexOf(product) === -1){
-      console.log(this.cart)
       product['unitPrice'] = product.price
       this.cart.push(product)
       this._service.success(

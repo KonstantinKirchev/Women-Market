@@ -40,9 +40,10 @@ export class AddProductComponent implements OnInit {
 
   add(){
     const val = this.form.value;
+    let units = 1
 
     let data = { name: val.name, picture: val.picture, price: val.price, 
-                 quantity: val.quantity, description: val.description, category: val.category, store: val.store}
+                 quantity: val.quantity, units: units, description: val.description, category: val.category, store: val.store}
 
     this.productsService.addProduct(JSON.stringify(data)).subscribe(()=>console.log('Product added.'));
     this.router.navigate(['/products/all'])
