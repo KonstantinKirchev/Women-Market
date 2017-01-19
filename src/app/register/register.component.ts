@@ -12,7 +12,7 @@ import { GlobalValidator } from "../shared/security/global-validator"
 })
 export class RegisterComponent  {
 
-  form: FormGroup;
+  form: FormGroup; 
 
   constructor(private fb: FormBuilder,
               private authService: AuthService,
@@ -46,6 +46,7 @@ export class RegisterComponent  {
                     localStorage.setItem('profile', JSON.stringify(profile));
                     localStorage.setItem('username', name);
                     localStorage.setItem('user_id', authResult.uid);
+                    localStorage.setItem('shopping-cart', JSON.stringify([]))
                     let data = {uid: authResult.uid, name: name, email: email, isAdmin: false}
                     this.usersService.addUser(JSON.stringify(data)).subscribe(()=>console.log('User added.'));
                 },

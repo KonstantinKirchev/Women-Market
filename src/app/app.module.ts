@@ -7,6 +7,7 @@ import { firebaseConfig, authConfig } from "../environments/firebase.config";
 import { AuthService } from "./shared/security/auth.service";
 import { AuthGuard } from "./shared/security/auth.guard";
 import { AngularFireModule } from "angularfire2/index";
+import { SimpleNotificationsModule } from "angular2-notifications";
 
 import { CarouselModule } from 'ng2-bootstrap';
 import { ModalModule } from 'ng2-bootstrap/modal';
@@ -54,7 +55,8 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component'
     HttpModule,
     routing,
     CarouselModule,
-    ModalModule
+    ModalModule,
+    SimpleNotificationsModule
   ],
   providers: [appRoutingProviders, AuthService, AuthGuard, UsersService, StoresService, ProductsService, ShoppingCartService],
   bootstrap: [AppComponent]

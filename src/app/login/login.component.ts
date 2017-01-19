@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
         let nameResult = emailResult.substring(0, emailResult.lastIndexOf("@"));
         localStorage.setItem('profile', JSON.stringify(authResult.auth));
         localStorage.setItem('username', nameResult);
+        localStorage.setItem('shopping-cart', JSON.stringify([]))
       });
   }
 
@@ -53,7 +54,8 @@ export class LoginComponent implements OnInit {
     this.authService.signInWithGoogle()
       .then((authResult: any) => {
         this.router.navigate(['/'])
-        localStorage.setItem('profile', JSON.stringify(authResult.auth));
+        localStorage.setItem('profile', JSON.stringify(authResult.auth))
+        localStorage.setItem('shopping-cart', JSON.stringify([]))
         //let data = {uid: authResult.auth.uid, name: authResult.auth.displayName, email: authResult.auth.email, isAdmin: false}
         //this.usersService.findUserById(authResult.auth.uid).subscribe((result)=>console.log(result));
         //this.usersService.addUser(JSON.stringify(data)).subscribe(()=>console.log('User added.'));

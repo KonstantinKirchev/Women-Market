@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingCartService } from "../shared/services/shopping_cart.service";
+import { NotificationsService } from "angular2-notifications"
 
 @Component({
   selector: 'app-shopping-cart',
@@ -13,14 +14,17 @@ export class ShoppingCartComponent implements OnInit {
   total: number = 0
   isEmpty: boolean = false
 
-  constructor(private shoppingCartService: ShoppingCartService ) { }
+  constructor(private shoppingCartService: ShoppingCartService,
+              private _service: NotificationsService ) { }
 
   ngOnInit() {
     this.productList = JSON.parse(localStorage.getItem('shopping-cart'))
-    for(let product of this.productList){
-      this.total = this.total + product.price
-      if(this.total != 0){
-        this.isEmpty = !this.isEmpty
+    if(this.productList){
+      for(let product of this.productList){
+        this.total = this.total + product.price
+        if(this.total != 0){
+          this.isEmpty = !this.isEmpty
+        }
       }
     }
   }
@@ -35,9 +39,16 @@ export class ShoppingCartComponent implements OnInit {
     }
 
     if(this.productList[i].quantity == 0){
-      //this.baseproductList = JSON.parse(localStorage.getItem('shopping-cart'))
-      //this.productList[i].price -= this.baseproductList[i].price
-      //this.total -= this.productList[i].unitPrice
+      this._service.success(
+                            'Successfully removed',
+                            'Continue shopping',
+                            {
+                                timeOut: 5000,
+                                showProgressBar: true,
+                                pauseOnHover: false,
+                                clickToClose: true
+                            }
+                        )
       this.productList.splice( i, 1 )
       localStorage.setItem('shopping-cart', JSON.stringify(this.productList))
     }
@@ -63,6 +74,16 @@ export class ShoppingCartComponent implements OnInit {
     if(this.total == 0){
       this.isEmpty = !this.isEmpty
     }
+    this._service.success(
+                            'Successfully removed',
+                            'Continue shopping',
+                            {
+                                timeOut: 5000,
+                                showProgressBar: true,
+                                pauseOnHover: false,
+                                clickToClose: true
+                            }
+                        )
   }
 
   order(){
@@ -74,6 +95,16 @@ export class ShoppingCartComponent implements OnInit {
     this.productList = null
     this.total = 0
     this.isEmpty = false
+    this._service.success(
+                          'Your order was received.',
+                          'Thank you for shopping with us.',
+                          {
+                              timeOut: 5000,
+                              showProgressBar: true,
+                              pauseOnHover: false,
+                              clickToClose: true
+                          }
+                      )
   }
 
 }
