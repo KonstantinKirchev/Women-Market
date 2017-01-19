@@ -17,7 +17,7 @@
                 <tbody>
                     <tr *ngFor="let product of productList; let i = index">
                         <td>{{product.name}}</td>
-                        <td><button (click)="decrease(i)">-</button> {{product.quantity}} <button (click)="increase(i)">+</button></td>
+                        <td><button (click)="decrease(i)">-</button> {{product.units}} <button (click)="increase(i)">+</button></td>
                         <td>{{product.price | number:'1.1-2'}}</td>
                         <td><button (click)="removeProduct(i)" class="btn btn-danger">Remove</button></td>
                     </tr>

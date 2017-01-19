@@ -30,15 +30,15 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   decrease(i){
-    if(this.productList[i].quantity > 0){
+    if(this.productList[i].units > 0){
       //this.baseproductList = JSON.parse(localStorage.getItem('shopping-cart'))
-      this.productList[i].quantity -= 1
+      this.productList[i].units -= 1
       this.productList[i].price -= this.productList[i].unitPrice
       this.total -= this.productList[i].unitPrice
       localStorage.setItem('shopping-cart', JSON.stringify(this.productList))
     }
 
-    if(this.productList[i].quantity == 0){
+    if(this.productList[i].units == 0){
       this._service.success(
                             'Successfully removed',
                             'Continue shopping',
@@ -61,7 +61,7 @@ export class ShoppingCartComponent implements OnInit {
 
   increase(i){
     //this.baseproductList = JSON.parse(localStorage.getItem('shopping-cart'))
-    this.productList[i].quantity += 1
+    this.productList[i].units += 1
     this.productList[i].price += this.productList[i].unitPrice
     this.total += this.productList[i].unitPrice
     localStorage.setItem('shopping-cart', JSON.stringify(this.productList))
@@ -91,8 +91,8 @@ export class ShoppingCartComponent implements OnInit {
     let profile = JSON.parse(localStorage.getItem('profile'))
     let cart = {ownerId: profile.uid, products: localStorage.getItem('shopping-cart'), totalPrice: this.total, dateOfOrder: Date.now()}
     this.shoppingCartService.createShoppingCart(cart).subscribe((res)=>console.log(res))
-    localStorage.removeItem('shopping-cart')
     this.productList = null
+    localStorage.setItem('shopping-cart', JSON.stringify([]))
     this.total = 0
     this.isEmpty = false
     this._service.success(
