@@ -21,10 +21,10 @@ export class ShoppingCartComponent implements OnInit {
     this.productList = JSON.parse(localStorage.getItem('shopping-cart'))
     if(this.productList){
       for(let product of this.productList){
-        this.total = this.total + product.price
-        if(this.total != 0){
-          this.isEmpty = !this.isEmpty
-        }
+        this.total += product.price
+      }
+      if(this.total != 0){
+        this.isEmpty = !this.isEmpty
       }
     }
   }
