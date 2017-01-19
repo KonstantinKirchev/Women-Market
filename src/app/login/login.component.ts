@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
                 private router:Router, private usersService: UsersService) {
 
       this.form = this.fb.group({
-          email: ['',Validators.required],
-          password: ['',Validators.required]
+          email: ['',[Validators.required, Validators.pattern('[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z]{2,3}')]],
+          password: ['',[Validators.required, Validators.minLength(6)]]
       });
 
       
