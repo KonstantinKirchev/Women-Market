@@ -47,32 +47,26 @@ const appRoutes: Routes= [
     },
     {
         path:'products',
-        canActivate: [AuthGuard],
         children: [
             {
                 path: 'all',
-                component: ProductsComponent,
-                canActivate: [AuthGuard]
+                component: ProductsComponent
             },
             {
                 path: 'fruits',
-                component: ProductsComponent,
-                canActivate: [AuthGuard]
+                component: ProductsComponent
             },
             {
                 path: 'vegetables',
-                component: ProductsComponent,
-                canActivate: [AuthGuard]
+                component: ProductsComponent
             },
             {
                 path: 'dairy',
-                component: ProductsComponent,
-                canActivate: [AuthGuard]
+                component: ProductsComponent
             },
             {
                 path: 'meats',
-                component: ProductsComponent,
-                canActivate: [AuthGuard]
+                component: ProductsComponent
             }
         ]
     },
@@ -94,7 +88,8 @@ const appRoutes: Routes= [
     },
     {
         path:'shopping-cart',
-        component: ShoppingCartComponent
+        component: ShoppingCartComponent,
+        canActivate: [AuthGuard]
     },
     {
         path:'**',
