@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Validators, FormGroup, FormBuilder } from "@angular/forms";
-import { AuthService } from "../shared/security/auth.service";
-import { UsersService } from "../shared/services/users.service";
-import { Router } from "@angular/router";
-import { AngularFire } from 'angularfire2';
+import { Component, OnInit } from '@angular/core'
+import { Validators, FormGroup, FormBuilder } from "@angular/forms"
+import { AuthService } from "../shared/security/auth.service"
+import { UsersService } from "../shared/services/users.service"
+import { Router } from "@angular/router"
+import { AngularFire } from 'angularfire2'
 import { GlobalValidator } from "../shared/security/global-validator"
+import { NotificationsService } from "angular2-notifications"
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   profile: {}
 
   constructor(private fb:FormBuilder, private authService: AuthService, public af: AngularFire,
-                private router:Router, private usersService: UsersService) {
+                private router:Router, private usersService: UsersService, private _service: NotificationsService) {
 
       this.form = this.fb.group({
           email: ['',[Validators.required, GlobalValidator.mailFormat]],
@@ -47,6 +48,29 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('profile', JSON.stringify(authResult.auth));
         localStorage.setItem('username', nameResult);
         localStorage.setItem('shopping-cart', JSON.stringify([]))
+        this._service.info(
+                          'Welcome back '+ nameResult,
+                          'Happy shopping :)',
+                          {
+                              timeOut: 3000,
+                              showProgressBar: true,
+                              pauseOnHover: false,
+                              clickToClose: true
+                          }
+                      )
+      })
+      .catch((err)=>{
+        this.router.navigate(['/login'])
+        this._service.error(
+                          'Invalid email or password.',
+                          'Please try again.',
+                          {
+                              timeOut: 3000,
+                              showProgressBar: true,
+                              pauseOnHover: false,
+                              clickToClose: true
+                          }
+                      )
       });
   }
 

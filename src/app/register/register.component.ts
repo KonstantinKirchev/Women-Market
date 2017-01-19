@@ -4,6 +4,7 @@ import { AuthService } from "../shared/security/auth.service";
 import { Router } from "@angular/router";
 import { UsersService } from "../shared/services/users.service"
 import { GlobalValidator } from "../shared/security/global-validator"
+import { NotificationsService } from "angular2-notifications"
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,8 @@ export class RegisterComponent  {
   constructor(private fb: FormBuilder,
               private authService: AuthService,
               private router: Router,
-              private usersService: UsersService) {
+              private usersService: UsersService,
+              private _service: NotificationsService) {
 
       this.form = this.fb.group({
           email: ['',[Validators.required, GlobalValidator.mailFormat]],
@@ -49,8 +51,31 @@ export class RegisterComponent  {
                     localStorage.setItem('shopping-cart', JSON.stringify([]))
                     let data = {uid: authResult.uid, name: name, email: email, isAdmin: false}
                     this.usersService.addUser(JSON.stringify(data)).subscribe(()=>console.log('User added.'));
+                    this._service.info(
+                          'Welcome '+ name,
+                          'Happy shopping :)',
+                          {
+                              timeOut: 3000,
+                              showProgressBar: true,
+                              pauseOnHover: false,
+                              clickToClose: true
+                          }
+                      )
                 },
                 err => alert(err)
-            );
+            )
+            .catch((err)=>{
+                this.router.navigate(['/register'])
+                this._service.error(
+                                'Invalid email or password.',
+                                'Please try again.',
+                                {
+                                    timeOut: 3000,
+                                    showProgressBar: true,
+                                    pauseOnHover: false,
+                                    clickToClose: true
+                                }
+                            )
+            });
     }
 }
