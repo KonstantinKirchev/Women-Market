@@ -3,3 +3,18 @@
     color: white;
     padding: 10px;
 }
+.ng-valid, .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.form-signin{
+    border-left: none;
+}
+
+.alert{
+    margin-bottom: 0;
+}

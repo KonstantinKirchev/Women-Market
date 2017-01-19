@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators} from "@angular/forms";
 import { AuthService } from "../shared/security/auth.service";
 import { Router } from "@angular/router";
 import { UsersService } from "../shared/services/users.service"
+import { GlobalValidator } from "../shared/security/global-validator"
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,7 @@ export class RegisterComponent  {
               private usersService: UsersService) {
 
       this.form = this.fb.group({
-          email: ['',[Validators.required, Validators.pattern('[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z]{2,3}')]],
+          email: ['',[Validators.required, GlobalValidator.mailFormat]],
           password: ['',[Validators.required, Validators.minLength(6)]],
           confirm: ['',[Validators.required, Validators.minLength(6)]]
       });
