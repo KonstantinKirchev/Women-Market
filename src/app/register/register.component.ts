@@ -11,7 +11,7 @@ import { UsersService } from "../shared/services/users.service"
 })
 export class RegisterComponent  {
 
-  form:FormGroup;
+  form: FormGroup;
 
   constructor(private fb: FormBuilder,
               private authService: AuthService,
@@ -19,9 +19,9 @@ export class RegisterComponent  {
               private usersService: UsersService) {
 
       this.form = this.fb.group({
-          email: ['',Validators.required],
-          password: ['',Validators.required],
-          confirm: ['',Validators.required]
+          email: ['',[Validators.required, Validators.pattern('[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z]{2,3}')]],
+          password: ['',[Validators.required, Validators.minLength(6)]],
+          confirm: ['',[Validators.required, Validators.minLength(6)]]
       });
 
 
