@@ -4,6 +4,7 @@ import { AuthService } from "../shared/security/auth.service";
 import { UsersService } from "../shared/services/users.service";
 import { Router } from "@angular/router";
 import { AngularFire } from 'angularfire2';
+import { GlobalValidator } from "../shared/security/global-validator"
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
                 private router:Router, private usersService: UsersService) {
 
       this.form = this.fb.group({
-          email: ['',[Validators.required, Validators.pattern('[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z]{2,3}')]],
+          email: ['',[Validators.required, GlobalValidator.mailFormat]],
           password: ['',[Validators.required, Validators.minLength(6)]]
       });
 

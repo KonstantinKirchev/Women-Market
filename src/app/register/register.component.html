@@ -4,7 +4,6 @@
     <h2 class="form-signin-heading">Register</h2>
     <label for="inputEmail" class="sr-only">Email address</label>
     <input type="email" id="inputEmail" class="form-control" placeholder="Email address" formControlName="email" autofocus>
-    <!--<div class="field-error-message" *ngIf="form.controls.email.errors?.pattern">Email is not valid</div>-->
     <div *ngIf="form.controls.email.errors && (form.controls.email.dirty || form.controls.email.touched)"
      class="alert alert-danger">
       <div [hidden]="!form.controls.email.errors.required">
@@ -16,7 +15,6 @@
     </div>
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="password">
-    <!--<div class="field-error-message" *ngIf="form.controls.password.errors?.minlength">Must be at least 6 characters long</div>-->
     <div *ngIf="form.controls.password.errors && (form.controls.password.dirty || form.controls.password.touched)"
      class="alert alert-danger">
       <div [hidden]="!form.controls.password.errors.required">
@@ -28,7 +26,6 @@
     </div>
     <label for="inputConfirm" class="sr-only">Confirm Password:</label>
     <input id="inputConfirm" type="password" class="form-control" placeholder="Confirm Password" formControlName="confirm" >
-    <!--<div class="field-error-message" *ngIf="form.controls.confirm.errors?.minlength">Must be at least 6 characters long</div>-->
     <div *ngIf="form.controls.confirm.errors && (form.controls.confirm.dirty || form.controls.confirm.touched)"
      class="alert alert-danger">
       <div [hidden]="!form.controls.confirm.errors.required">

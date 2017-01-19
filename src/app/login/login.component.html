@@ -4,10 +4,26 @@
     <h2 class="form-signin-heading">Login</h2>
     <label for="inputEmail" class="sr-only">Email address</label>
     <input type="email" id="inputEmail" class="form-control" placeholder="Email address" formControlName="email" autofocus>
-    <div class="field-error-message" *ngIf="form.controls.email.errors?.pattern">Email is not valid</div>
+    <div *ngIf="form.controls.email.errors && (form.controls.email.dirty || form.controls.email.touched)"
+     class="alert alert-danger">
+      <div [hidden]="!form.controls.email.errors.required">
+        Email is required.
+      </div>
+      <div [hidden]="!form.controls.email.errors.incorrectMailFormat">
+        Email is not valid.
+      </div>
+    </div>
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="password" autofocus>
-    <div class="field-error-message" *ngIf="form.controls.password.errors?.minlength">Must be at least 6 characters long</div>
+    <div *ngIf="form.controls.password.errors && (form.controls.password.dirty || form.controls.password.touched)"
+     class="alert alert-danger">
+      <div [hidden]="!form.controls.password.errors.required">
+        Password is required.
+      </div>
+      <div [hidden]="!form.controls.password.errors.minlength">
+        Password must be at least 6 characters long.
+      </div>
+    </div>
     <br>
     <button class="btn btn-lg btn-primary btn-block" (click)="login()" [disabled]="!isAllValExist()">Login</button>
     <br>
