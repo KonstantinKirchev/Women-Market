@@ -3,6 +3,7 @@ import { ProductsService } from "../shared/services/products.service";
 import { ShoppingCartService } from "../shared/services/shopping_cart.service";
 import { Product } from "../shared/models/product";
 import { NotificationsService } from "angular2-notifications"
+import { AuthService } from '../shared/security/auth.service'
 
 @Component({
   selector: 'app-products',
@@ -16,7 +17,8 @@ export class ProductsComponent implements OnInit {
   
   constructor(private productsService: ProductsService, 
               private shoppingCartService: ShoppingCartService,
-              private _service: NotificationsService) { }
+              private _service: NotificationsService,
+              private auth: AuthService) { }
 
   ngOnInit() {
     this.productsService.findAllProducts().subscribe((res)=> this.products = res)
