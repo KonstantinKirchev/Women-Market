@@ -26,6 +26,12 @@ export class ProductsService {
                 .map(res => res.json())
     }
 
+    deleteProduct(key): Observable<any>{
+        const url = firebaseConfig.databaseURL + '/products/' + key + '.json';
+
+        return this.http.delete(url);
+    }
+
     // editStore(body, uid) {
     //     let headers = new Headers()
     //     headers.append('Content-Type', 'application/json')

@@ -13,7 +13,8 @@ import {
     EditProfileComponent,
     AddStoreComponent,
     AddProductComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    EditProductComponent
 } from './index';
 
 const appRoutes: Routes= [
@@ -89,6 +90,11 @@ const appRoutes: Routes= [
     {
         path:'shopping-cart',
         component: ShoppingCartComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path:'products/edit/:id',
+        component: EditProductComponent,
         canActivate: [AuthGuard]
     },
     {

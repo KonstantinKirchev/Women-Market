@@ -24,7 +24,8 @@ import { ShoppingCartService } from "./shared/services/shopping_cart.service";
 
 import { CategoryFilterPipe } from "./shared/pipes/category-filter.pipe"
 import { ProductFilterPipe } from "./shared/pipes/product-filter.pipe";
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component'
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { EditProductComponent } from './edit-product/edit-product.component'
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component'
     StoreModalComponent,
     CategoryFilterPipe,
     ProductFilterPipe,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,

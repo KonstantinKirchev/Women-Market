@@ -19,7 +19,8 @@
                     <h3>{{product.name}}</h3>
                     <p>{{product.description}}</p>
                     <h3 style="display: flex; justify-content: space-between;"><span>{{product.quantity}}</span><span style="color: red;">{{product.price}} lv</span></h3>
-                    <p><a class="btn btn-primary" role="button" *ngIf="auth.authenticated" (click)="addToCart(product)">Add to cart</a></p>
+                    <p><a class="btn btn-primary" role="button" *ngIf="auth.authenticated && !auth.isAdmin" (click)="addToCart(product)">Add to cart</a></p>
+                    <p *ngIf="auth.isAdmin"><a class="btn btn-primary" role="button" (click)="editProduct(product)">Edit</a> <a class="btn btn-danger" role="button" (click)="deleteProduct(product.$key)">Delete</a></p>
                 </div>
                 </div>
             </div>
