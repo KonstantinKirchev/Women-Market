@@ -26,6 +26,26 @@ export class StoresService {
                 .map(res => res.json())
     }
 
+    deleteStore(key): Observable<any>{
+        const url = firebaseConfig.databaseURL + '/stores/' + key + '.json';
+
+        return this.http.delete(url);
+    }
+
+    findStoreById(id: string) {
+        return this.db.object('stores/' + id);
+    }
+
+    editStore(body, key) {
+        let headers = new Headers()
+        headers.append('Content-Type', 'application/json')
+        
+        const url = firebaseConfig.databaseURL + '/stores/' + key + '.json';
+
+        return this.http.put(url, body, { headers: headers })
+                .map(res => res.json())
+    }
+
     // editStore(body, uid) {
     //     let headers = new Headers()
     //     headers.append('Content-Type', 'application/json')

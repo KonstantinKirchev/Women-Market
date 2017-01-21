@@ -32,18 +32,6 @@ export class ProductsService {
         return this.http.delete(url);
     }
 
-    // findProductById(id:string):Observable<Product> {
-    //     return this.db.list('products', {
-    //         query: {
-    //             orderByKey: '$key',
-    //             equalTo: id
-    //         }
-    //     })
-    //     .filter(results => results && results.length > 0)
-    //     .map(results => Product.fromJson(results[0]))
-    //     .do(console.log);
-    // }
-
     findProductById(id: string) {
         return this.db.object('products/' + id);
     }

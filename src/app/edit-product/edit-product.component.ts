@@ -32,11 +32,9 @@ export class EditProductComponent implements OnInit {
     
     this.activatedRoute.params.subscribe(params => {
             this.productId = params['id'];
-            console.log(this.productId)
             this.productsService.findProductById(this.productId)
             .subscribe(item => {
               this.product = item
-              console.log(this.product)
               this.form = this.fb.group({
                     name: [this.product.name, Validators.required],
                     picture: [this.product.picture, Validators.required],
