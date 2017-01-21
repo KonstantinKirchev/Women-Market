@@ -32,13 +32,29 @@ export class ProductsService {
         return this.http.delete(url);
     }
 
-    // editStore(body, uid) {
-    //     let headers = new Headers()
-    //     headers.append('Content-Type', 'application/json')
-        
-    //     const url = firebaseConfig.databaseURL + '/stores/' + uid + '.json';
-
-    //     return this.http.put(url, body, { headers: headers })
-    //             .map(res => res.json())
+    // findProductById(id:string):Observable<Product> {
+    //     return this.db.list('products', {
+    //         query: {
+    //             orderByKey: '$key',
+    //             equalTo: id
+    //         }
+    //     })
+    //     .filter(results => results && results.length > 0)
+    //     .map(results => Product.fromJson(results[0]))
+    //     .do(console.log);
     // }
+
+    findProductById(id: string) {
+        return this.db.object('products/' + id);
+    }
+
+    editProduct(body, key) {
+        let headers = new Headers()
+        headers.append('Content-Type', 'application/json')
+        
+        const url = firebaseConfig.databaseURL + '/products/' + key + '.json';
+
+        return this.http.put(url, body, { headers: headers })
+                .map(res => res.json())
+    }
 }

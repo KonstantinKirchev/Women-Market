@@ -60,7 +60,6 @@ export class ProductsComponent implements OnInit {
   }
 
   editProduct(product){
-    console.log(product.$key)
     this.router.navigate(['/products/edit/' + product.$key])
   }
 

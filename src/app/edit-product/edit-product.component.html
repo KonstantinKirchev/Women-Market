@@ -1,3 +1,23 @@
-<p>
-  edit-product works!
-</p>
+<div class="container">
+  <form class="form-signin" autocomplete="off" novalidate [formGroup]="form">
+      <h2 class="form-signin-heading">Edit product</h2>
+      <label for="inputName" class="sr-only">Name</label>
+      <input type="text" id="inputName" class="form-control" formControlName="name" autofocus>
+      <br>
+      <label for="inputPicture" class="sr-only">Picture</label>
+      <input type="text" id="inputPicture" class="form-control" formControlName="picture" autofocus>
+      <br>
+      <label for="inputPrice" class="sr-only">Price</label>
+      <input type="number" id="inputPrice" class="form-control" formControlName="price" autofocus>
+      <br>
+      <label for="inputQuantity" class="sr-only">Quantity</label>
+      <input type="text" id="inputQuantity" class="form-control" formControlName="quantity" autofocus>
+      <br>
+      <label for="inputDescription" class="sr-only">Description</label>
+      <textarea id="inputDescription" class="form-control" formControlName="description" autofocus></textarea>
+      <br>
+      <button type="button" class="btn btn-lg btn-primary" (click)="edit()" [disabled]="!isAllValExist()">Edit</button>
+      <button type="button" class="btn btn-lg btn-alert" (click)="cancel()">Cancel</button>
+      <br>
+  </form>
+</div>

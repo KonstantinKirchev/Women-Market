@@ -29,7 +29,6 @@ import { ProductFilterPipe } from "./shared/pipes/product-filter.pipe";
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { EditProductComponent } from './edit-product/edit-product.component'
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +62,13 @@ import { EditProductComponent } from './edit-product/edit-product.component'
     SimpleNotificationsModule,
     Ng2PaginationModule
   ],
-  providers: [appRoutingProviders, AuthService, AuthGuard, UsersService, StoresService, ProductsService, ShoppingCartService],
+  providers: [appRoutingProviders, 
+              AuthService, 
+              AuthGuard, 
+              UsersService, 
+              StoresService, 
+              ProductsService, 
+              ShoppingCartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
