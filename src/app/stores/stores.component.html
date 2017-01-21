@@ -28,9 +28,9 @@
                         </p>
                     </div>
             </div>
-            <h4 style="text-align: center;">{{store.address}}</h4>
-            <h3 style="text-align: center; margin-top: 0;"><a style="cursor: pointer;" data-toggle="modal" data-target="#myModal">{{store.name}}</a></h3>
-            <p *ngIf="auth.isAdmin"><a class="btn btn-primary" role="button" (click)="editStore(store)">Edit</a> <a class="btn btn-danger" role="button" (click)="deleteStore(store.$key)">Delete</a></p>
+            <h4>{{store.address}}</h4>
+            <h3><a style="cursor: pointer;" data-toggle="modal" data-target="#myModal">{{store.name}}</a></h3>
+            <p *ngIf="auth.isAdmin"><a class="btn btn-primary" role="button" (click)="editStore(store)">Edit</a> <a class="btn btn-danger" role="button" (click)="deleteStore(store)">Delete</a></p>
         
             <app-store-modal [store]="store"></app-store-modal>
         </div>
