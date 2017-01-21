@@ -4,6 +4,7 @@ import { ProductsService } from "../shared/services/products.service";
 import { StoresService } from "../shared/services/stores.service";
 import { Router } from "@angular/router";
 import { AngularFire } from 'angularfire2';
+import { NotificationsService } from "angular2-notifications"
 
 @Component({
   selector: 'app-add-product',
@@ -17,7 +18,8 @@ export class AddProductComponent implements OnInit {
   categories: string[] = ['fruits', 'vegetables', 'dairy', 'meats']
 
   constructor(private fb:FormBuilder, public af: AngularFire, private router:Router,
-              private productsService: ProductsService, private storesService: StoresService) {
+              private productsService: ProductsService, private storesService: StoresService,
+              private _service: NotificationsService) {
                 this.form = this.fb.group({
                     name: ['', Validators.required],
                     picture: ['', Validators.required],
@@ -45,12 +47,32 @@ export class AddProductComponent implements OnInit {
     let data = { name: val.name, picture: val.picture, price: val.price, 
                  quantity: val.quantity, units: units, description: val.description, category: val.category, store: val.store}
 
-    this.productsService.addProduct(JSON.stringify(data)).subscribe(()=>console.log('Product added.'));
+    this.productsService.addProduct(JSON.stringify(data))
+                        .subscribe(()=>this._service.success(
+                          'Product added successfully',
+                          'Continue adding',
+                          {
+                              timeOut: 3000,
+                              showProgressBar: true,
+                              pauseOnHover: false,
+                              clickToClose: true
+                          }
+                      ));
     this.router.navigate(['/products/all'])
   }
 
   cancel(){
     this.router.navigate(['/'])
+    this._service.info(
+                          'Added product was canceled',
+                          'Continue adding',
+                          {
+                              timeOut: 3000,
+                              showProgressBar: true,
+                              pauseOnHover: false,
+                              clickToClose: true
+                          }
+                      )
   }
 
 }

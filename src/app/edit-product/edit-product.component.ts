@@ -64,7 +64,7 @@ export class EditProductComponent implements OnInit {
 
     this.productsService.editProduct(JSON.stringify(data), this.product.$key)
     .subscribe(()=> this._service.success(
-                          'Edit successfully',
+                          'Product was successfully edited',
                           'Continue editing/deleting',
                           {
                               timeOut: 3000,
@@ -79,7 +79,7 @@ export class EditProductComponent implements OnInit {
   cancel(){
     this.router.navigate(['/products/all'])
     this._service.info(
-                          'Edit was canceled',
+                          'Edit product was canceled',
                           'Continue editing/deleting',
                           {
                               timeOut: 3000,
