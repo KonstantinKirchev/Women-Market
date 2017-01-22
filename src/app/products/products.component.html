@@ -12,7 +12,7 @@
             </form>
         </div>
         <div class="row" style="margin-bottom: 10vh;">
-            <div class="col-sm-6 col-md-4" *ngFor="let product of products | categoryFilter: productsFilter | productFilter: term | paginate: {itemsPerPage: 6, currentPage:page, id: '1'}">
+            <div class="col-sm-6 col-md-4" *ngFor="let product of products | categoryFilter: productsFilter | storeFilter: storeNameFilter | productFilter: term | paginate: {itemsPerPage: 6, currentPage:page, id: '1'}">
                 <div class="thumbnail">
                 <img src="{{product.picture}}" alt="product">
                 <div class="caption">

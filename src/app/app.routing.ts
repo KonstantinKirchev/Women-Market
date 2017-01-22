@@ -53,6 +53,10 @@ const appRoutes: Routes= [
             {
                 path: ':name',
                 component: ProductsComponent
+            },
+            {
+                path: 'store/:storename',
+                component: ProductsComponent
             }
         ]
     },

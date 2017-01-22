@@ -24,7 +24,8 @@ import { ProductsService } from "./shared/services/products.service";
 import { ShoppingCartService } from "./shared/services/shopping_cart.service";
 
 import { CategoryFilterPipe } from "./shared/pipes/category-filter.pipe"
-import { ProductFilterPipe } from "./shared/pipes/product-filter.pipe";
+import { ProductFilterPipe } from "./shared/pipes/product-filter.pipe"
+import { StoreFilterPipe } from "./shared/pipes/store-filter.pipe"
 
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
@@ -48,6 +49,7 @@ import { EditStoreComponent } from './edit-store/edit-store.component'
     StoreModalComponent,
     CategoryFilterPipe,
     ProductFilterPipe,
+    StoreFilterPipe,
     ShoppingCartComponent,
     EditProductComponent,
     EditStoreComponent

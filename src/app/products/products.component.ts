@@ -15,7 +15,8 @@ export class ProductsComponent implements OnInit {
 
   cart: Product[]
   products: any 
-  productsFilter: string 
+  productsFilter: string
+  storeNameFilter: string 
   
   constructor(private productsService: ProductsService, 
               private shoppingCartService: ShoppingCartService,
@@ -29,6 +30,7 @@ export class ProductsComponent implements OnInit {
     this.cart = JSON.parse(localStorage.getItem('shopping-cart'))
     this.activatedRoute.params.subscribe(params => {
             this.productsFilter = params['name'];
+            this.storeNameFilter = params['storename'];
     })
   }
 
