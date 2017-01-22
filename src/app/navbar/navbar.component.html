@@ -26,7 +26,7 @@
               Products <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li *ngFor="let category of categories"><a routerLink="products/{{category | lowercase}}" (click)="getValue(category)">{{category}}</a></li>
+              <li *ngFor="let category of categories"><a routerLink="products/{{category | lowercase}}">{{category}}</a></li>
             </ul>
           </li>
         </ul>

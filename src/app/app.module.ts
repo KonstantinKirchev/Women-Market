@@ -60,7 +60,7 @@ import { EditStoreComponent } from './edit-store/edit-store.component'
     HttpModule,
     routing,
     CarouselModule,
-    ModalModule,
+    ModalModule.forRoot(),
     SimpleNotificationsModule,
     Ng2PaginationModule
   ],

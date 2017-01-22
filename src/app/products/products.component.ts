@@ -4,7 +4,7 @@ import { ShoppingCartService } from "../shared/services/shopping_cart.service";
 import { Product } from "../shared/models/product";
 import { NotificationsService } from "angular2-notifications"
 import { AuthService } from '../shared/security/auth.service'
-import { Router } from "@angular/router"
+import { Router, ActivatedRoute } from "@angular/router"
 
 @Component({
   selector: 'app-products',
@@ -14,17 +14,22 @@ import { Router } from "@angular/router"
 export class ProductsComponent implements OnInit {
 
   cart: Product[]
-  products: any  
+  products: any 
+  productsFilter: string 
   
   constructor(private productsService: ProductsService, 
               private shoppingCartService: ShoppingCartService,
               private _service: NotificationsService,
               private auth: AuthService,
-              private router: Router) { }
+              private router: Router,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.productsService.findAllProducts().subscribe((res)=> this.products = res)
     this.cart = JSON.parse(localStorage.getItem('shopping-cart'))
+    this.activatedRoute.params.subscribe(params => {
+            this.productsFilter = params['name'];
+    })
   }
 
   addToCart(product){

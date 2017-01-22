@@ -14,6 +14,7 @@ export class StoresComponent implements OnInit {
 
   stores: any
   products: any
+  store: any
 
   constructor(private storesService: StoresService, 
               private productsService: ProductsService,
@@ -77,5 +78,10 @@ export class StoresComponent implements OnInit {
                             }
                         ));
    }
+
+   onClick(store:any, lgModal:any){
+    this.store = store;
+    lgModal.show()
+  }
 
 }

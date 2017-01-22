@@ -29,10 +29,31 @@
                     </div>
             </div>
             <h4>{{store.address}}</h4>
-            <h3><a style="cursor: pointer;" data-toggle="modal" data-target="#myModal">{{store.name}}</a></h3>
+            <h3><a style="cursor: pointer;" data-toggle="modal" data-target="#myModal" (click)="onClick(store,lgModal)">{{store.name}}</a></h3>
             <p *ngIf="auth.isAdmin"><a class="btn btn-primary" role="button" (click)="editStore(store)">Edit</a> <a class="btn btn-danger" role="button" (click)="deleteStore(store)">Delete</a></p>
         
-            <app-store-modal [store]="store"></app-store-modal>
+            <!--<app-store-modal [store]="store"></app-store-modal>-->
+            <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">{{store['name']}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                        <p>{{store['description']}}</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" routerLink="/products/{{store.name}}">Products</button>
+                        <button type="button" class="btn btn-alert" data-dismiss="modal" (click)="lgModal.hide()">Close</button>
+                    </div>
+                </div>
+            </div>
+            </div>
         </div>
 
         
