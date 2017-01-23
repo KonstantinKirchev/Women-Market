@@ -42,7 +42,7 @@ export class ShoppingCartComponent implements OnInit {
                             'Successfully removed',
                             'Continue shopping',
                             {
-                                timeOut: 5000,
+                                timeOut: 3000,
                                 showProgressBar: true,
                                 pauseOnHover: false,
                                 clickToClose: true
@@ -89,12 +89,8 @@ export class ShoppingCartComponent implements OnInit {
     this.productList = JSON.parse(localStorage.getItem('shopping-cart'))
     let profile = JSON.parse(localStorage.getItem('profile'))
     let cart = {ownerId: profile.uid, products: localStorage.getItem('shopping-cart'), totalPrice: this.roundNumber(this.total, 2), dateOfOrder: Date.now()}
-    this.shoppingCartService.createShoppingCart(cart).subscribe((res)=>console.log(res))
-    this.productList = null
-    localStorage.setItem('shopping-cart', JSON.stringify([]))
-    this.total = 0
-    this.isEmpty = false
-    this._service.success(
+    this.shoppingCartService.createShoppingCart(cart)
+    .subscribe(()=>this._service.success(
                           'Your order was received.',
                           'Thank you for shopping with us.',
                           {
@@ -103,7 +99,11 @@ export class ShoppingCartComponent implements OnInit {
                               pauseOnHover: false,
                               clickToClose: true
                           }
-                      )
+                      ))
+    this.productList = null
+    localStorage.setItem('shopping-cart', JSON.stringify([]))
+    this.total = 0
+    this.isEmpty = false
   }
 
   roundNumber(num, scale) {

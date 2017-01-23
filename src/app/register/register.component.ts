@@ -50,17 +50,17 @@ export class RegisterComponent  {
                     localStorage.setItem('user_id', authResult.uid);
                     localStorage.setItem('shopping-cart', JSON.stringify([]))
                     let data = {uid: authResult.uid, name: name, email: email, isAdmin: false}
-                    this.usersService.addUser(JSON.stringify(data)).subscribe(()=>console.log('User added.'));
-                    this._service.info(
-                          'Welcome '+ name,
-                          'Happy shopping :)',
-                          {
-                              timeOut: 3000,
-                              showProgressBar: true,
-                              pauseOnHover: false,
-                              clickToClose: true
-                          }
-                      )
+                    this.usersService.addUser(JSON.stringify(data))
+                                .subscribe(()=>this._service.success(
+                                                'You are successfully registered',
+                                                'Happy shopping :)',
+                                                {
+                                                    timeOut: 3000,
+                                                    showProgressBar: true,
+                                                    pauseOnHover: false,
+                                                    clickToClose: true
+                                                }
+                                            ));
                 },
                 err => alert(err)
             )

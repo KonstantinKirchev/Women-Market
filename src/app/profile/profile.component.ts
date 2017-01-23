@@ -15,8 +15,10 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.profile = JSON.parse(localStorage.getItem('profile'))
-    let name = this.profile.email.substring(0, this.profile.email.lastIndexOf("@"))
-    this.profile.displayName = name
+    if(!this.profile.name){
+      let name = this.profile.email.substring(0, this.profile.email.lastIndexOf("@"))
+      this.profile.displayName = name
+    }
     this.isEditable = false
   }
 

@@ -1,15 +1,62 @@
-<div class="container">
+<!--<div class="container">
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-lg-3 col-sm-12">
             <img *ngIf="profile.photoURL" class="img-circle" style="width:100%" src="{{profile.photoURL}}">
         </div>
-        <div class="col-md-10">
-            <h1>{{profile.displayName}}'s profile</h1>
+        <div class="col-lg-9 col-sm-12">
+            <h1 *ngIf="profile.displayName">{{profile.displayName}}'s profile</h1>
+            <h1 *ngIf="profile.name">{{profile.name}}</h1>
+            <p *ngIf="profile.address">Address: {{profile.address}}</p>
             <p *ngIf="profile.email">Email: {{profile.email}}</p>
+            <p *ngIf="profile.phone">Phone: {{profile.phone}}</p>
         </div>    
     </div>
     <br> 
     <button class="btn btn-lg btn-primary" (click)="editProfile()">Edit your profile</button>
 
     <app-edit-profile [isEditable]="isEditable" (onCancel)="isEditable = $event"></app-edit-profile>
-</div>
+</div>-->
+
+<div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title" *ngIf="profile.displayName">{{profile.displayName}}</h3>
+              <h3 class="panel-title" *ngIf="profile.name">{{profile.name}}</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center" *ngIf="profile.photoURL"> <img alt="User Pic" src="{{profile.photoURL}}" class="img-circle img-responsive"> </div>
+                
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                    <tr *ngIf="profile.address">
+                        <td>Home Address</td>
+                        <td>{{profile.address}}</td>
+                    </tr>
+                      <tr *ngIf="profile.email">
+                        <td>Email</td>
+                        <td>{{profile.email}}</td>
+                      </tr>
+                      <tr *ngIf="profile.phone">
+                        <td>Phone Number</td>
+                        <td>{{profile.phone}}</td>  
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                  
+                  <a class="btn btn-primary" (click)="editProfile()">Edit your profile</a>
+                  <a class="btn btn-primary" (click)="myOrders()">My orders</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <app-edit-profile [isEditable]="isEditable" (onCancel)="isEditable = $event"></app-edit-profile>
+    </div>
