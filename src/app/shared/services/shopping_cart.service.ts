@@ -12,6 +12,10 @@ export class ShoppingCartService {
     constructor(private db:AngularFireDatabase, private http: Http) {
     }
 
+    findAllShoppingCarts():Observable<ShoppingCart[]> {
+        return this.db.list('shopping-carts').map(ShoppingCart.fromJsonArray);
+    }
+
     findShoppingCart(ownerId: string): Observable<ShoppingCart> {
         return this.db.list('shopping-carts', {
             query: {

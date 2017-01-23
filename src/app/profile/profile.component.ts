@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ShoppingCartService } from "../shared/services/shopping_cart.service";
+import { ShoppingCart } from "../shared/models/shoppingCart";
 
 @Component({
   selector: 'app-profile',
@@ -9,8 +11,10 @@ export class ProfileComponent implements OnInit {
 
   profile: any
   isEditable: boolean
+  carts: ShoppingCart[] = []
+  isVisible: boolean
 
-  constructor() {
+  constructor(private shoppingCartService: ShoppingCartService) {
   }
 
   ngOnInit() {
@@ -20,9 +24,27 @@ export class ProfileComponent implements OnInit {
       this.profile.displayName = name
     }
     this.isEditable = false
+    this.isVisible = false
   }
 
   editProfile(){
     this.isEditable = true
+  }
+
+  myOrders(){
+    this.isVisible = true
+    this.shoppingCartService.findAllShoppingCarts()
+    .subscribe((scarts)=>{
+      this.carts = []
+      for(let scart of scarts){
+        if(scart.ownerId == this.profile.uid){
+          this.carts.push(scart)
+        }
+      }
+    })
+  }
+
+  close(){
+    this.isVisible = false
   }
 }

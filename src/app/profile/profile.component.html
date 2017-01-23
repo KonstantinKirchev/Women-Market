@@ -59,4 +59,32 @@
         </div>
       </div>
       <app-edit-profile [isEditable]="isEditable" (onCancel)="isEditable = $event"></app-edit-profile>
+
+      <section *ngIf="isVisible">
+        <!--<div class="container" *ngIf="!isEmpty">
+            <h1>You don't have any shopping carts.</h1>
+        </div>-->
+        <div class="container">
+            <h1>My orders</h1>
+            <div>
+                <table class="table table-striped table-hover ">
+                    <thead>
+                        <tr>
+                            <th>Order Id</th>
+                            <th>Date of order</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cart of carts; let i = index">
+                            <td>{{cart.$key}}</td>
+                            <td>{{cart.dateOfOrder | date: 'medium'}}</td>
+                            <td>{{cart.totalPrice | number:'1.1-2'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button (click)="close()" class="btn btn-danger">Close</button>
+            </div>
+        </div>
+      </section>
     </div>
