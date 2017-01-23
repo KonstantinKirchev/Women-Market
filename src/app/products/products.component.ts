@@ -16,7 +16,7 @@ export class ProductsComponent implements OnInit {
   cart: Product[]
   products: any 
   productsFilter: string
-  storeNameFilter: string 
+  storeNameFilter: string
   
   constructor(private productsService: ProductsService, 
               private shoppingCartService: ShoppingCartService,
@@ -36,14 +36,14 @@ export class ProductsComponent implements OnInit {
 
   addToCart(product){
 
-    if(this.cart.indexOf(product) === -1){
+    if(!this.productExist(product)){
       product['unitPrice'] = product.price
       this.cart.push(product)
       this._service.success(
                             'The product was added',
                             'Continue shopping',
                             {
-                                timeOut: 5000,
+                                timeOut: 3000,
                                 showProgressBar: true,
                                 pauseOnHover: false,
                                 clickToClose: true
@@ -51,12 +51,11 @@ export class ProductsComponent implements OnInit {
                         )
     }
     else{
-      //product.quantity += 1
       this._service.error(
                             'This product was already added',
                             'Continue shopping',
                             {
-                                timeOut: 5000,
+                                timeOut: 3000,
                                 showProgressBar: true,
                                 pauseOnHover: false,
                                 clickToClose: true
@@ -94,5 +93,14 @@ export class ProductsComponent implements OnInit {
                             }
                         ),
           () => console.log('Finished'));
+  }
+
+  productExist(product){
+    for(let currentProduct of this.cart){
+      if(currentProduct.name == product.name && currentProduct.store == product.store){
+        return true
+      } 
+    }
+    return false
   }
 }

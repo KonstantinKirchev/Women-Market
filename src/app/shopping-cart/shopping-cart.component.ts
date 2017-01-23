@@ -31,7 +31,6 @@ export class ShoppingCartComponent implements OnInit {
 
   decrease(i){
     if(this.productList[i].units > 0){
-      //this.baseproductList = JSON.parse(localStorage.getItem('shopping-cart'))
       this.productList[i].units -= 1
       this.productList[i].price -= this.productList[i].unitPrice
       this.total -= this.productList[i].unitPrice
@@ -53,8 +52,8 @@ export class ShoppingCartComponent implements OnInit {
       localStorage.setItem('shopping-cart', JSON.stringify(this.productList))
     }
 
-    if(this.total == 0){
-      this.isEmpty = !this.isEmpty
+    if(this.productList.length == 0){
+      this.isEmpty = false
     }
     
   }
@@ -71,7 +70,7 @@ export class ShoppingCartComponent implements OnInit {
     this.total -= this.productList[key].price
     this.productList.splice( key, 1 )
     localStorage.setItem('shopping-cart', JSON.stringify(this.productList))
-    if(this.total == 0){
+    if(this.productList.length == 0){
       this.isEmpty = !this.isEmpty
     }
     this._service.success(
@@ -89,7 +88,7 @@ export class ShoppingCartComponent implements OnInit {
   order(){
     this.productList = JSON.parse(localStorage.getItem('shopping-cart'))
     let profile = JSON.parse(localStorage.getItem('profile'))
-    let cart = {ownerId: profile.uid, products: localStorage.getItem('shopping-cart'), totalPrice: this.total, dateOfOrder: Date.now()}
+    let cart = {ownerId: profile.uid, products: localStorage.getItem('shopping-cart'), totalPrice: this.roundNumber(this.total, 2), dateOfOrder: Date.now()}
     this.shoppingCartService.createShoppingCart(cart).subscribe((res)=>console.log(res))
     this.productList = null
     localStorage.setItem('shopping-cart', JSON.stringify([]))
@@ -99,12 +98,21 @@ export class ShoppingCartComponent implements OnInit {
                           'Your order was received.',
                           'Thank you for shopping with us.',
                           {
-                              timeOut: 5000,
+                              timeOut: 3000,
                               showProgressBar: true,
                               pauseOnHover: false,
                               clickToClose: true
                           }
                       )
+  }
+
+  roundNumber(num, scale) {
+    var number = Math.round(num * Math.pow(10, scale)) / Math.pow(10, scale);
+    if(num - number > 0) {
+      return (number + Math.floor(2 * Math.round((num - number) * Math.pow(10, (scale + 1))) / 10) / Math.pow(10, scale));
+    } else {
+      return number;
+    }
   }
 
 }
