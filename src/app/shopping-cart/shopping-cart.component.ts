@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingCartService } from "../shared/services/shopping_cart.service";
 import { NotificationsService } from "angular2-notifications"
+import { Router } from "@angular/router"
 
 @Component({
   selector: 'app-shopping-cart',
@@ -15,7 +16,8 @@ export class ShoppingCartComponent implements OnInit {
   isEmpty: boolean = false
 
   constructor(private shoppingCartService: ShoppingCartService,
-              private _service: NotificationsService ) { }
+              private _service: NotificationsService,
+              private router: Router ) { }
 
   ngOnInit() {
     this.productList = JSON.parse(localStorage.getItem('shopping-cart'))
@@ -88,22 +90,36 @@ export class ShoppingCartComponent implements OnInit {
   order(){
     this.productList = JSON.parse(localStorage.getItem('shopping-cart'))
     let profile = JSON.parse(localStorage.getItem('profile'))
-    let cart = {ownerId: profile.uid, products: localStorage.getItem('shopping-cart'), totalPrice: this.roundNumber(this.total, 2), dateOfOrder: Date.now()}
-    this.shoppingCartService.createShoppingCart(cart)
-    .subscribe(()=>this._service.success(
-                          'Your order was received.',
-                          'Thank you for shopping with us.',
+    if(!profile.address && !profile.phone){
+      this.router.navigate(['/profile'])
+      this._service.info(
+                          'Please edit your profile.',
+                          'We need your address and phone number.',
                           {
                               timeOut: 3000,
                               showProgressBar: true,
                               pauseOnHover: false,
                               clickToClose: true
                           }
-                      ))
-    this.productList = null
-    localStorage.setItem('shopping-cart', JSON.stringify([]))
-    this.total = 0
-    this.isEmpty = false
+                      )
+    } else {
+      let cart = {ownerId: profile.uid, products: localStorage.getItem('shopping-cart'), totalPrice: this.roundNumber(this.total, 2), dateOfOrder: Date.now()}
+      this.shoppingCartService.createShoppingCart(cart)
+      .subscribe(()=>this._service.success(
+                            'Your order was received.',
+                            'Thank you for shopping with us.',
+                            {
+                                timeOut: 3000,
+                                showProgressBar: true,
+                                pauseOnHover: false,
+                                clickToClose: true
+                            }
+                        ))
+      this.productList = null
+      localStorage.setItem('shopping-cart', JSON.stringify([]))
+      this.total = 0
+      this.isEmpty = false
+    }
   }
 
   roundNumber(num, scale) {
