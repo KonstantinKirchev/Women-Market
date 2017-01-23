@@ -45,14 +45,4 @@ export class StoresService {
         return this.http.put(url, body, { headers: headers })
                 .map(res => res.json())
     }
-
-    // editStore(body, uid) {
-    //     let headers = new Headers()
-    //     headers.append('Content-Type', 'application/json')
-        
-    //     const url = firebaseConfig.databaseURL + '/stores/' + uid + '.json';
-
-    //     return this.http.put(url, body, { headers: headers })
-    //             .map(res => res.json())
-    // }
 }

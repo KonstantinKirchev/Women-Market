@@ -44,10 +44,9 @@ export class RegisterComponent  {
                     this.router.navigateByUrl('/');
                     let email = authResult.auth.email;
                     let name = email.substring(0, email.lastIndexOf("@"));
-                    let profile = {displayName: name, email: email, photoURL: ''}
+                    let profile = {uid: authResult.uid, displayName: name, email: email, photoURL: ''}
                     localStorage.setItem('profile', JSON.stringify(profile));
                     localStorage.setItem('username', name);
-                    localStorage.setItem('user_id', authResult.uid);
                     localStorage.setItem('shopping-cart', JSON.stringify([]))
                     let data = {uid: authResult.uid, name: name, email: email, isAdmin: false}
                     this.usersService.addUser(JSON.stringify(data))
