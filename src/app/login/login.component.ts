@@ -15,7 +15,7 @@ import { NotificationsService } from "angular2-notifications"
 export class LoginComponent implements OnInit {
 
   form: FormGroup;
-  profile: {}
+  profile: any
 
   constructor(private fb:FormBuilder, private authService: AuthService, public af: AngularFire,
                 private router:Router, private usersService: UsersService, private _service: NotificationsService) {
@@ -43,13 +43,11 @@ export class LoginComponent implements OnInit {
       this.authService.login(formValue.email, formValue.password)
       .then((authResult: any) => {
         this.router.navigate(['/'])
-        let emailResult = authResult.auth.email
-        let nameResult = emailResult.substring(0, emailResult.lastIndexOf("@"));
-        localStorage.setItem('profile', JSON.stringify(authResult.auth));
-        localStorage.setItem('username', nameResult);
-        localStorage.setItem('shopping-cart', JSON.stringify([]))
-        this._service.info(
-                          'Welcome back '+ nameResult,
+        this.usersService.findUserById(authResult.auth.uid).subscribe((data)=>{
+            this.profile = data
+            localStorage.setItem('profile', JSON.stringify(this.profile));
+            this._service.info(
+                          'Welcome back '+ this.profile.name,
                           'Happy shopping :)',
                           {
                               timeOut: 3000,
@@ -58,6 +56,22 @@ export class LoginComponent implements OnInit {
                               clickToClose: true
                           }
                       )
+        })
+        //let emailResult = authResult.auth.email
+        //let nameResult = emailResult.substring(0, emailResult.lastIndexOf("@"));
+        //localStorage.setItem('profile', JSON.stringify(authResult.auth));
+        //localStorage.setItem('username', nameResult);
+        localStorage.setItem('shopping-cart', JSON.stringify([]))
+        // this._service.info(
+        //                   'Welcome back '+ nameResult,
+        //                   'Happy shopping :)',
+        //                   {
+        //                       timeOut: 3000,
+        //                       showProgressBar: true,
+        //                       pauseOnHover: false,
+        //                       clickToClose: true
+        //                   }
+        //               )
       })
       .catch((err)=>{
         this.router.navigate(['/login'])
