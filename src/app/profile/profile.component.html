@@ -55,7 +55,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let cart of carts; let i = index">
+                        <tr *ngFor="let cart of carts | paginate: {itemsPerPage: 3, currentPage:page, id: '1'}">
                             <td>{{cart.$key}}</td>
                             <td>{{cart.dateOfOrder | date: 'medium'}}</td>
                             <td><a (click)="cartProducts(cart.products, lgModal)" style="cursor: pointer;">products</a></td>
@@ -66,6 +66,12 @@
                 <button (click)="close()" class="btn btn-danger">Close</button>
             </div>
         </div>
+        <pagination-controls (pageChange)="page = $event" id="1"
+                      maxSize="3"
+                      directionLinks="true"
+                      autoHide="true" 
+                      style="text-align: center; cursor: pointer; font-size: 1.5em;">
+                </pagination-controls>
       </section>
 
       <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
