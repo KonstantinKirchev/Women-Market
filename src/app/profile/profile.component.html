@@ -1,22 +1,3 @@
-<!--<div class="container">
-    <div class="row">
-        <div class="col-lg-3 col-sm-12">
-            <img *ngIf="profile.photoURL" class="img-circle" style="width:100%" src="{{profile.photoURL}}">
-        </div>
-        <div class="col-lg-9 col-sm-12">
-            <h1 *ngIf="profile.displayName">{{profile.displayName}}'s profile</h1>
-            <h1 *ngIf="profile.name">{{profile.name}}</h1>
-            <p *ngIf="profile.address">Address: {{profile.address}}</p>
-            <p *ngIf="profile.email">Email: {{profile.email}}</p>
-            <p *ngIf="profile.phone">Phone: {{profile.phone}}</p>
-        </div>    
-    </div>
-    <br> 
-    <button class="btn btn-lg btn-primary" (click)="editProfile()">Edit your profile</button>
-
-    <app-edit-profile [isEditable]="isEditable" (onCancel)="isEditable = $event"></app-edit-profile>
-</div>-->
-
 <div class="container">
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
@@ -61,10 +42,7 @@
       <app-edit-profile [isEditable]="isEditable" (onCancel)="isEditable = $event"></app-edit-profile>
 
       <section *ngIf="isVisible">
-        <!--<div class="container" *ngIf="!isEmpty">
-            <h1>You don't have any shopping carts.</h1>
-        </div>-->
-        <div class="container">
+        <div class="row">
             <h1>My orders</h1>
             <div>
                 <table class="table table-striped table-hover ">
@@ -72,6 +50,7 @@
                         <tr>
                             <th>Order Id</th>
                             <th>Date of order</th>
+                            <th>Product's list</th>
                             <th>Price</th>
                         </tr>
                     </thead>
@@ -79,6 +58,7 @@
                         <tr *ngFor="let cart of carts; let i = index">
                             <td>{{cart.$key}}</td>
                             <td>{{cart.dateOfOrder | date: 'medium'}}</td>
+                            <td><a (click)="cartProducts(cart.products, lgModal)" style="cursor: pointer;">products</a></td>
                             <td>{{cart.totalPrice | number:'1.1-2'}}</td>
                         </tr>
                     </tbody>
@@ -87,4 +67,38 @@
             </div>
         </div>
       </section>
-    </div>
+
+      <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Product list</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped table-hover ">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of productList">
+                            <td>{{product.name}}</td>
+                            <td>{{product.units}}</td>
+                            <td>{{product.price}} lv.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-alert" data-dismiss="modal" (click)="lgModal.hide()">Close</button>
+                </div>
+            </div>
+        </div>
+      </div>
+</div>

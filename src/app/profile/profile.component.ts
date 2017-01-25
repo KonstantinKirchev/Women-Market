@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
   isEditable: boolean
   carts: ShoppingCart[] = []
   isVisible: boolean
+  productList: any
 
   constructor(private shoppingCartService: ShoppingCartService) {
   }
@@ -46,5 +47,10 @@ export class ProfileComponent implements OnInit {
 
   close(){
     this.isVisible = false
+  }
+
+  cartProducts(products:any, lgModal:any){
+    this.productList = JSON.parse(products)
+    lgModal.show() 
   }
 }
