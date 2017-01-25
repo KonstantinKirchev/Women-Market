@@ -15,7 +15,8 @@ import {
     AddProductComponent,
     ShoppingCartComponent,
     EditProductComponent,
-    EditStoreComponent
+    EditStoreComponent,
+    OrderComponent
 } from './index';
 
 const appRoutes: Routes= [
@@ -72,6 +73,11 @@ const appRoutes: Routes= [
             {
                 path: 'add/product',
                 component: AddProductComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: 'orders',
+                component: OrderComponent,
                 canActivate: [AuthGuard]
             }
         ]

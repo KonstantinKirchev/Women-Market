@@ -1,0 +1,37 @@
+<section id="viewAllOrders">
+    <div class="container" *ngIf="isEmpty">
+        <h1>There are no orders.</h1>
+    </div>
+    <div class="container" *ngIf="!isEmpty">
+        <h1>Current orders</h1>
+        <div class="oreders" id="orders">
+            <table class="table table-striped table-hover ">
+                <thead>
+                    <tr>
+                        <th>Order number</th>
+                        <th>Date of order</th>
+                        <th>Client</th>
+                        <th>Total amount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let order of orders | paginate: {itemsPerPage: 6, currentPage:page, id: '1'}; let i = index">
+                        <td>{{order.$key}}</td>
+                        <td>{{order.dateOfOrder | date: 'medium'}}</td>
+                        <td><a (click)="showClient(order.ownerId)" style="cursor: pointer;" data-toggle="modal" data-target="#myModal">client</a></td>
+                        <td>{{order.totalPrice}} lv.</td>
+                        <td><button (click)="deliver(i)" class="btn btn-danger">Deliver</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <pagination-controls (pageChange)="page = $event" id="1"
+                      maxSize="6"
+                      directionLinks="true"
+                      autoHide="true" 
+                      style="text-align: center; cursor: pointer; font-size: 1.5em;">
+                </pagination-controls>
+    <app-user-modal [client]="client"></app-user-modal>
+</section>

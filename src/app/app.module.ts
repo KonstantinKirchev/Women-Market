@@ -29,7 +29,9 @@ import { StoreFilterPipe } from "./shared/pipes/store-filter.pipe"
 
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
-import { EditStoreComponent } from './edit-store/edit-store.component'
+import { EditStoreComponent } from './edit-store/edit-store.component';
+import { OrderComponent } from './order/order.component';
+import { UserModalComponent } from './user-modal/user-modal.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { EditStoreComponent } from './edit-store/edit-store.component'
     StoreFilterPipe,
     ShoppingCartComponent,
     EditProductComponent,
-    EditStoreComponent
+    EditStoreComponent,
+    OrderComponent,
+    UserModalComponent
   ],
   imports: [
     BrowserModule,
