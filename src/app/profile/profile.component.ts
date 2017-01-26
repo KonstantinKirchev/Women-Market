@@ -11,9 +11,11 @@ export class ProfileComponent implements OnInit {
 
   profile: any
   isEditable: boolean
-  carts: ShoppingCart[] = []
+  orders: ShoppingCart[] = []
   isVisible: boolean
   productList: any
+  filterOrders: string
+  isDelivered: boolean
 
   constructor(private shoppingCartService: ShoppingCartService) {
   }
@@ -26,6 +28,7 @@ export class ProfileComponent implements OnInit {
     }
     this.isEditable = false
     this.isVisible = false
+    this.filterOrders = 'Pending'
   }
 
   editProfile(){
@@ -33,13 +36,13 @@ export class ProfileComponent implements OnInit {
   }
 
   myOrders(){
-    this.isVisible = true
+    this.isVisible = !this.isVisible
     this.shoppingCartService.findAllShoppingCarts()
     .subscribe((scarts)=>{
-      this.carts = []
+      this.orders = []
       for(let scart of scarts){
         if(scart.ownerId == this.profile.uid){
-          this.carts.push(scart)
+          this.orders.push(scart)
         }
       }
     })
@@ -52,5 +55,14 @@ export class ProfileComponent implements OnInit {
   cartProducts(products:any, lgModal:any){
     this.productList = JSON.parse(products)
     lgModal.show() 
+  }
+
+  onChange(selected){
+    this.filterOrders = selected
+    if(this.filterOrders == 'Delivered'){
+      this.isDelivered = true
+    } else {
+      this.isDelivered = false
+    }
   }
 }

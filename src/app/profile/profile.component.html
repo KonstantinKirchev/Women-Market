@@ -41,7 +41,7 @@
       </div>
       <app-edit-profile [isEditable]="isEditable" (onCancel)="isEditable = $event"></app-edit-profile>
 
-      <section *ngIf="isVisible">
+      <!--<section *ngIf="isVisible">
         <div class="row">
             <h1>My orders</h1>
             <div>
@@ -72,7 +72,54 @@
                       autoHide="true" 
                       style="text-align: center; cursor: pointer; font-size: 1.5em;">
                 </pagination-controls>
-      </section>
+      </section>-->
+
+      <section *ngIf="isVisible" id="viewAllOrders">
+            <div class="container" *ngIf="isEmpty">
+                <h1>There are no orders.</h1>
+            </div>
+            <div class="container" *ngIf="!isEmpty">
+                <h1>My Orders</h1>
+                <br>
+                <span>Sort by: </span>
+                <select class="selectpicker" (change)="onChange($event.target.value)">
+                    <option>Pending</option>
+                    <option>Delivered</option>
+                </select>
+                <br>
+                <br>
+                <div class="oreders" id="orders">
+                    <table class="table table-striped table-hover ">
+                        <thead>
+                            <tr>
+                                <th>Order number</th>
+                                <th>Date of order</th>
+                                <th *ngIf="isDelivered">Date of delivery</th>
+                                <th>Total amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let order of orders | orderFilter: filterOrders | paginate: {itemsPerPage: 6, currentPage:page, id: '1'}">
+                                <td>{{order.$key}}</td>
+                                <td>{{order.dateOfOrder | date: 'medium'}}</td>
+                                <td *ngIf="isDelivered">{{order.dateOfDelivery | date: 'medium'}}</td>
+                                <td>{{order.totalPrice}} lv.</td>
+                                <td *ngIf="!isDelivered" style="color: red;">Pending</td>
+                                <td *ngIf="isDelivered" style="color: green;">Delivered</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <pagination-controls (pageChange)="page = $event" id="1"
+                            maxSize="6"
+                            directionLinks="true"
+                            autoHide="true" 
+                            style="text-align: center; cursor: pointer; font-size: 1.5em;">
+                        </pagination-controls>
+            <app-user-modal [client]="client"></app-user-modal>
+    </section>
 
       <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
