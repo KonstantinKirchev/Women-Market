@@ -8,12 +8,13 @@ export class ShoppingCart {
         public products: any[],
         public totalPrice: number,
         public dateOfOrder: Date,
-        public isComplete: boolean) {
+        public dateOfDelivery: Date,
+        public status: string) {
 
     }
 
-    static fromJson({$key, ownerId, products, totalPrice, dateOfOrder, isComplete}) {
-        return new ShoppingCart($key, ownerId, products, totalPrice, dateOfOrder, isComplete);
+    static fromJson({$key, ownerId, products, totalPrice, dateOfOrder, dateOfDelivery, status}) {
+        return new ShoppingCart($key, ownerId, products, totalPrice, dateOfOrder, dateOfDelivery, status);
     }
 
     static fromJsonArray(json : any[]) : ShoppingCart[] {

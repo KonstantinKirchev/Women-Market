@@ -103,7 +103,7 @@ export class ShoppingCartComponent implements OnInit {
                           }
                       )
     } else {
-      let cart = {ownerId: profile.uid, products: localStorage.getItem('shopping-cart'), totalPrice: this.roundNumber(this.total, 2), dateOfOrder: Date.now()}
+      let cart = {ownerId: profile.uid, products: localStorage.getItem('shopping-cart'), totalPrice: this.roundNumber(this.total, 2), dateOfOrder: Date.now(), dateOfDelivery: null, status: 'Pending'}
       this.shoppingCartService.createShoppingCart(cart)
       .subscribe(()=>this._service.success(
                             'Your order was received.',
