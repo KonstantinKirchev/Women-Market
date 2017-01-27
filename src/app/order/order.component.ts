@@ -19,6 +19,7 @@ export class OrderComponent implements OnInit {
   clientId: string
   filterOrders: string
   isDelivered: boolean
+  productList: any
 
   constructor(private shoppingCartService: ShoppingCartService,
               private usersService: UsersService,
@@ -66,5 +67,10 @@ export class OrderComponent implements OnInit {
     } else {
       this.isDelivered = false
     }
+  }
+
+  orderProducts(products:any, lgModal:any){
+    this.productList = JSON.parse(products)
+    lgModal.show()
   }
 }
