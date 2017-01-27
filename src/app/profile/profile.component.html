@@ -95,6 +95,7 @@
                                 <th>Order number</th>
                                 <th>Date of order</th>
                                 <th *ngIf="isDelivered">Date of delivery</th>
+                                <th>Products</th>
                                 <th>Total amount</th>
                                 <th>Status</th>
                             </tr>
@@ -104,6 +105,7 @@
                                 <td>{{order.$key}}</td>
                                 <td>{{order.dateOfOrder | date: 'medium'}}</td>
                                 <td *ngIf="isDelivered">{{order.dateOfDelivery | date: 'medium'}}</td>
+                                <td><a (click)="cartProducts(order.products, lgModal)" style="cursor: pointer;">products</a></td>
                                 <td>{{order.totalPrice}} lv.</td>
                                 <td *ngIf="!isDelivered" style="color: red;">Pending</td>
                                 <td *ngIf="isDelivered" style="color: green;">Delivered</td>
