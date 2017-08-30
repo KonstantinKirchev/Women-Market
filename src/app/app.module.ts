@@ -11,7 +11,7 @@ import { SimpleNotificationsModule } from "angular2-notifications";
 
 import { CarouselModule } from 'ng2-bootstrap';
 import { ModalModule } from 'ng2-bootstrap/modal';
-import { Ng2PaginationModule } from 'ng2-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent, HomeComponent, NavbarComponent, LoginComponent, RegisterComponent, ProfileComponent,
          StoresComponent, FooterComponent, CategoriesComponent, ProductsComponent, EditProfileComponent,
@@ -69,8 +69,8 @@ import { UserModalComponent } from './user-modal/user-modal.component';
     routing,
     CarouselModule,
     ModalModule.forRoot(),
-    SimpleNotificationsModule,
-    Ng2PaginationModule
+    SimpleNotificationsModule.forRoot(),
+    NgxPaginationModule
   ],
   providers: [appRoutingProviders, 
               AuthService, 
