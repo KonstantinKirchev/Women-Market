@@ -4,6 +4,8 @@ import { ProductsService } from "../shared/services/products.service"
 import { AuthService } from '../shared/security/auth.service'
 import { Router } from "@angular/router"
 import { NotificationsService } from "angular2-notifications"
+import { Store } from "app/shared/models/store";
+import { Product } from "app/shared/models/product";
 
 @Component({
   selector: 'app-stores',
@@ -12,9 +14,9 @@ import { NotificationsService } from "angular2-notifications"
 })
 export class StoresComponent implements OnInit {
 
-  stores: any
-  products: any
-  store: any
+  stores: Store[]
+  products: Product[]
+  store: Store
 
   constructor(private storesService: StoresService, 
               private productsService: ProductsService,
