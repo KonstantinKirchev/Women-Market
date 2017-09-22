@@ -1,11 +1,12 @@
-import {Observable} from "rxjs/Rx";
+import { Observable } from "rxjs/Rx";
+import { Product } from "app/shared/models/product";
 
 export class ShoppingCart {
 
     constructor(
         public $key: string,
         public ownerId: string,
-        public products: any[],
+        public products: Product[],
         public totalPrice: number,
         public dateOfOrder: Date,
         public dateOfDelivery: Date,
