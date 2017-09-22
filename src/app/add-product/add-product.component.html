@@ -24,8 +24,8 @@
           <option *ngFor="let store of stores" value="{{store.name}}">{{store.name}}</option>
       </select>
       <br>
-      <button type="button" class="btn btn-lg btn-primary" (click)="add()" [disabled]="!isAllValExist()">Add</button>
-      <button type="button" class="btn btn-lg btn-alert" (click)="cancel()">Cancel</button>
+      <button type="button" class="btn btn-primary" (click)="add()" [disabled]="!isAllValExist()">Add</button>
+      <button type="button" class="btn btn-alert" (click)="cancel()">Cancel</button>
       <br>
   </form>
 </div>
