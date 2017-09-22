@@ -15,7 +15,7 @@
     <label for="inputPhone" class="sr-only">Phone</label>
     <input type="text" id="inputPhone" class="form-control" placeholder="+359-XXX-XXX-XXX" formControlName="phone" autofocus>
     <br>
-    <button type="button" class="btn btn-lg btn-primary" (click)="edit()" [disabled]="!isAllValExist()">Edit</button>
-    <button type="button" class="btn btn-lg btn-alert" (click)="cancel()">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="edit()" [disabled]="!isAllValExist()">Edit</button>
+    <button type="button" class="btn btn-alert" (click)="cancel()">Cancel</button>
     <br>
 </form>
