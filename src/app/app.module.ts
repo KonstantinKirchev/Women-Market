@@ -15,7 +15,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent, HomeComponent, NavbarComponent, LoginComponent, RegisterComponent, ProfileComponent,
          StoresComponent, FooterComponent, CategoriesComponent, ProductsComponent, EditProfileComponent,
-         AddStoreComponent, AddProductComponent, StoreModalComponent  
+         AddStoreComponent, AddProductComponent, StoreModalComponent, UserModalComponent, ShoppingCartComponent,
+         EditProductComponent, EditStoreComponent, OrderComponent  
         } from './index';
 
 import { UsersService } from "./shared/services/users.service";
@@ -27,12 +28,6 @@ import { CategoryFilterPipe } from "./shared/pipes/category-filter.pipe"
 import { ProductFilterPipe } from "./shared/pipes/product-filter.pipe"
 import { StoreFilterPipe } from "./shared/pipes/store-filter.pipe"
 import { OrderFilterPipe } from "./shared/pipes/order-filter.pipe"
-
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { EditProductComponent } from './edit-product/edit-product.component';
-import { EditStoreComponent } from './edit-store/edit-store.component';
-import { OrderComponent } from './order/order.component';
-import { UserModalComponent } from './user-modal/user-modal.component';
 
 @NgModule({
   declarations: [

@@ -16,3 +16,4 @@ export { ShoppingCartComponent } from './shopping-cart/shopping-cart.component'
 export { EditProductComponent } from './edit-product/edit-product.component'
 export { EditStoreComponent } from './edit-store/edit-store.component'
 export { OrderComponent } from './order/order.component'
+export { UserModalComponent } from './user-modal/user-modal.component';
