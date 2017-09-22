@@ -13,3 +13,8 @@
 .alert{
     margin-bottom: 0;
 }
+
+.container {
+  margin-bottom: 10px;
+  width: 30vw;
+}
